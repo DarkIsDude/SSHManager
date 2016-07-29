@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB0EB9BD1D0F4E2E0007B6BC /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */; };
+		DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BE1D0F54FA0007B6BC /* Group.swift */; };
+		DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB342EB81D1282A6003B00F0 /* DetailController.swift */; };
+		DBB5EF311D4905120065B6B1 /* images in Resources */ = {isa = PBXBuildFile; fileRef = DBB5EF301D4905120065B6B1 /* images */; };
+		DBB5EF371D4A078B0065B6B1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB5EF361D4A078B0065B6B1 /* Data.swift */; };
+		DBC85D581D4A7ABF0072EF35 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D561D4A7ABF0072EF35 /* Realm.framework */; };
+		DBC85D591D4A7ABF0072EF35 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D561D4A7ABF0072EF35 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBC85D5A1D4A7ABF0072EF35 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */; };
+		DBC85D5B1D4A7ABF0072EF35 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBD4F4EB1D0F336800AE98B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4F4EA1D0F336800AE98B4 /* AppDelegate.swift */; };
+		DBD4F4ED1D0F336800AE98B4 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4F4EC1D0F336800AE98B4 /* ListController.swift */; };
+		DBD4F4EF1D0F336800AE98B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD4F4EE1D0F336800AE98B4 /* Assets.xcassets */; };
+		DBD4F4F21D0F336800AE98B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD4F4F01D0F336800AE98B4 /* Main.storyboard */; };
+		DBD4F4FD1D0F336800AE98B4 /* SSH_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4F4FC1D0F336800AE98B4 /* SSH_ManagerTests.swift */; };
+		DBD4F5081D0F336800AE98B4 /* SSH_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4F5071D0F336800AE98B4 /* SSH_ManagerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DBD4F4F91D0F336800AE98B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBD4F4DF1D0F336800AE98B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBD4F4E61D0F336800AE98B4;
+			remoteInfo = "SSH Manager";
+		};
+		DBD4F5041D0F336800AE98B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBD4F4DF1D0F336800AE98B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBD4F4E61D0F336800AE98B4;
+			remoteInfo = "SSH Manager";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DBB5EF3E1D4A42D80065B6B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DBC85D5B1D4A7ABF0072EF35 /* RealmSwift.framework in Embed Frameworks */,
+				DBC85D591D4A7ABF0072EF35 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
+		DB0EB9BE1D0F54FA0007B6BC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		DB342EB81D1282A6003B00F0 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		DBB5EF301D4905120065B6B1 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		DBB5EF361D4A078B0065B6B1 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		DBC85D561D4A7ABF0072EF35 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		DBD4F4E71D0F336800AE98B4 /* SSH Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SSH Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBD4F4EA1D0F336800AE98B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DBD4F4EC1D0F336800AE98B4 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		DBD4F4EE1D0F336800AE98B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBD4F4F11D0F336800AE98B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBD4F4F31D0F336800AE98B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBD4F4F81D0F336800AE98B4 /* SSH ManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SSH ManagerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBD4F4FC1D0F336800AE98B4 /* SSH_ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSH_ManagerTests.swift; sourceTree = "<group>"; };
+		DBD4F4FE1D0F336800AE98B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBD4F5031D0F336800AE98B4 /* SSH ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SSH ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBD4F5071D0F336800AE98B4 /* SSH_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSH_ManagerUITests.swift; sourceTree = "<group>"; };
+		DBD4F5091D0F336800AE98B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DBD4F4E41D0F336800AE98B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC85D5A1D4A7ABF0072EF35 /* RealmSwift.framework in Frameworks */,
+				DBC85D581D4A7ABF0072EF35 /* Realm.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD4F4F51D0F336800AE98B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD4F5001D0F336800AE98B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DBB5EF341D490A150065B6B1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */,
+				DB0EB9BE1D0F54FA0007B6BC /* Group.swift */,
+				DBB5EF361D4A078B0065B6B1 /* Data.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		DBB5EF351D490A260065B6B1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				DBD4F4EC1D0F336800AE98B4 /* ListController.swift */,
+				DB342EB81D1282A6003B00F0 /* DetailController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		DBD4F4DE1D0F336800AE98B4 = {
+			isa = PBXGroup;
+			children = (
+				DBC85D561D4A7ABF0072EF35 /* Realm.framework */,
+				DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */,
+				DBD4F4E91D0F336800AE98B4 /* SSH Manager */,
+				DBD4F4FB1D0F336800AE98B4 /* SSH ManagerTests */,
+				DBD4F5061D0F336800AE98B4 /* SSH ManagerUITests */,
+				DBD4F4E81D0F336800AE98B4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DBD4F4E81D0F336800AE98B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBD4F4E71D0F336800AE98B4 /* SSH Manager.app */,
+				DBD4F4F81D0F336800AE98B4 /* SSH ManagerTests.xctest */,
+				DBD4F5031D0F336800AE98B4 /* SSH ManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBD4F4E91D0F336800AE98B4 /* SSH Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DBB5EF351D490A260065B6B1 /* controller */,
+				DBB5EF341D490A150065B6B1 /* model */,
+				DBB5EF301D4905120065B6B1 /* images */,
+				DBD4F4EA1D0F336800AE98B4 /* AppDelegate.swift */,
+				DBD4F4EE1D0F336800AE98B4 /* Assets.xcassets */,
+				DBD4F4F01D0F336800AE98B4 /* Main.storyboard */,
+				DBD4F4F31D0F336800AE98B4 /* Info.plist */,
+			);
+			path = "SSH Manager";
+			sourceTree = "<group>";
+		};
+		DBD4F4FB1D0F336800AE98B4 /* SSH ManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				DBD4F4FC1D0F336800AE98B4 /* SSH_ManagerTests.swift */,
+				DBD4F4FE1D0F336800AE98B4 /* Info.plist */,
+			);
+			path = "SSH ManagerTests";
+			sourceTree = "<group>";
+		};
+		DBD4F5061D0F336800AE98B4 /* SSH ManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DBD4F5071D0F336800AE98B4 /* SSH_ManagerUITests.swift */,
+				DBD4F5091D0F336800AE98B4 /* Info.plist */,
+			);
+			path = "SSH ManagerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DBD4F4E61D0F336800AE98B4 /* SSH Manager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBD4F50C1D0F336800AE98B4 /* Build configuration list for PBXNativeTarget "SSH Manager" */;
+			buildPhases = (
+				DBD4F4E31D0F336800AE98B4 /* Sources */,
+				DBD4F4E41D0F336800AE98B4 /* Frameworks */,
+				DBD4F4E51D0F336800AE98B4 /* Resources */,
+				DBB5EF3E1D4A42D80065B6B1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SSH Manager";
+			productName = "SSH Manager";
+			productReference = DBD4F4E71D0F336800AE98B4 /* SSH Manager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DBD4F4F71D0F336800AE98B4 /* SSH ManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBD4F50F1D0F336800AE98B4 /* Build configuration list for PBXNativeTarget "SSH ManagerTests" */;
+			buildPhases = (
+				DBD4F4F41D0F336800AE98B4 /* Sources */,
+				DBD4F4F51D0F336800AE98B4 /* Frameworks */,
+				DBD4F4F61D0F336800AE98B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBD4F4FA1D0F336800AE98B4 /* PBXTargetDependency */,
+			);
+			name = "SSH ManagerTests";
+			productName = "SSH ManagerTests";
+			productReference = DBD4F4F81D0F336800AE98B4 /* SSH ManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DBD4F5021D0F336800AE98B4 /* SSH ManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBD4F5121D0F336800AE98B4 /* Build configuration list for PBXNativeTarget "SSH ManagerUITests" */;
+			buildPhases = (
+				DBD4F4FF1D0F336800AE98B4 /* Sources */,
+				DBD4F5001D0F336800AE98B4 /* Frameworks */,
+				DBD4F5011D0F336800AE98B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBD4F5051D0F336800AE98B4 /* PBXTargetDependency */,
+			);
+			name = "SSH ManagerUITests";
+			productName = "SSH ManagerUITests";
+			productReference = DBD4F5031D0F336800AE98B4 /* SSH ManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBD4F4DF1D0F336800AE98B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Edouard COMTET";
+				TargetAttributes = {
+					DBD4F4E61D0F336800AE98B4 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					DBD4F4F71D0F336800AE98B4 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = DBD4F4E61D0F336800AE98B4;
+					};
+					DBD4F5021D0F336800AE98B4 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = DBD4F4E61D0F336800AE98B4;
+					};
+				};
+			};
+			buildConfigurationList = DBD4F4E21D0F336800AE98B4 /* Build configuration list for PBXProject "SSH Manager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DBD4F4DE1D0F336800AE98B4;
+			productRefGroup = DBD4F4E81D0F336800AE98B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DBD4F4E61D0F336800AE98B4 /* SSH Manager */,
+				DBD4F4F71D0F336800AE98B4 /* SSH ManagerTests */,
+				DBD4F5021D0F336800AE98B4 /* SSH ManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBD4F4E51D0F336800AE98B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBB5EF311D4905120065B6B1 /* images in Resources */,
+				DBD4F4EF1D0F336800AE98B4 /* Assets.xcassets in Resources */,
+				DBD4F4F21D0F336800AE98B4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD4F4F61D0F336800AE98B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD4F5011D0F336800AE98B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DBD4F4E31D0F336800AE98B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBB5EF371D4A078B0065B6B1 /* Data.swift in Sources */,
+				DB0EB9BD1D0F4E2E0007B6BC /* Host.swift in Sources */,
+				DBD4F4ED1D0F336800AE98B4 /* ListController.swift in Sources */,
+				DBD4F4EB1D0F336800AE98B4 /* AppDelegate.swift in Sources */,
+				DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */,
+				DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD4F4F41D0F336800AE98B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBD4F4FD1D0F336800AE98B4 /* SSH_ManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBD4F4FF1D0F336800AE98B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBD4F5081D0F336800AE98B4 /* SSH_ManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBD4F4FA1D0F336800AE98B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBD4F4E61D0F336800AE98B4 /* SSH Manager */;
+			targetProxy = DBD4F4F91D0F336800AE98B4 /* PBXContainerItemProxy */;
+		};
+		DBD4F5051D0F336800AE98B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBD4F4E61D0F336800AE98B4 /* SSH Manager */;
+			targetProxy = DBD4F5041D0F336800AE98B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DBD4F4F01D0F336800AE98B4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBD4F4F11D0F336800AE98B4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DBD4F50A1D0F336800AE98B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DBD4F50B1D0F336800AE98B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DBD4F50D1D0F336800AE98B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "SSH Manager/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-Manager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DBD4F50E1D0F336800AE98B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "SSH Manager/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-Manager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DBD4F5101D0F336800AE98B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SSH ManagerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSH Manager.app/Contents/MacOS/SSH Manager";
+			};
+			name = Debug;
+		};
+		DBD4F5111D0F336800AE98B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SSH ManagerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSH Manager.app/Contents/MacOS/SSH Manager";
+			};
+			name = Release;
+		};
+		DBD4F5131D0F336800AE98B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SSH ManagerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "SSH Manager";
+			};
+			name = Debug;
+		};
+		DBD4F5141D0F336800AE98B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SSH ManagerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "SSH Manager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DBD4F4E21D0F336800AE98B4 /* Build configuration list for PBXProject "SSH Manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBD4F50A1D0F336800AE98B4 /* Debug */,
+				DBD4F50B1D0F336800AE98B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBD4F50C1D0F336800AE98B4 /* Build configuration list for PBXNativeTarget "SSH Manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBD4F50D1D0F336800AE98B4 /* Debug */,
+				DBD4F50E1D0F336800AE98B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBD4F50F1D0F336800AE98B4 /* Build configuration list for PBXNativeTarget "SSH ManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBD4F5101D0F336800AE98B4 /* Debug */,
+				DBD4F5111D0F336800AE98B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBD4F5121D0F336800AE98B4 /* Build configuration list for PBXNativeTarget "SSH ManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBD4F5131D0F336800AE98B4 /* Debug */,
+				DBD4F5141D0F336800AE98B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DBD4F4DF1D0F336800AE98B4 /* Project object */;
+}
