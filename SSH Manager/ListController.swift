@@ -12,17 +12,28 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
 
     @IBOutlet weak var outlineView: NSOutlineView!
     
-    let data = Data.getSingleton()
+    var data:Data? = nil
     
     func reloadData() {
-        data.save()        
+        data!.save()
         self.outlineView.reloadData()
+    }
+    
+    func setHost(host:Host, connect: Bool) {
+        let splitViewController = self.parentViewController as! NSSplitViewController
+        let detailController = splitViewController.childViewControllers[1] as! DetailController
+        
+        detailController.changeHost(host)
+        if (connect) {
+            detailController.connect()
+        }
     }
     
     /** NSViewController **/
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        data = Data.getSingleton()
     }
     
     override var representedObject: AnyObject? {
@@ -32,6 +43,18 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     }
     
     /** NSOutlineViewDelegate, NSOutlineViewDataSource **/
+    
+    func outlineViewItemWillExpand(notification: NSNotification) {
+        let o:AnyObject = (notification.userInfo?.first?.1)!
+        let group:Group = o as! Group
+        group.setExpandedValue(true)
+    }
+    
+    func outlineViewItemWillCollapse(notification: NSNotification) {
+        let o:AnyObject = (notification.userInfo?.first?.1)!
+        let group:Group = o as! Group
+        group.setExpandedValue(false)
+    }
     
     func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
         if let item: AnyObject = item {
@@ -48,7 +71,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
             }
         }
         else {
-            return data.getTree()[index]
+            return data!.getTree()[index]
         }
     }
     
@@ -70,19 +93,21 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
                     return 0
             }
         } else {
-            return data.getTree().count
+            return data!.getTree().count
         }
     }
     
     func outlineView(outlineView: NSOutlineView, viewForTableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.outlineView.expandItem(nil, expandChildren: true)
-        });
-        
         switch item {
         case let group as Group:
             let view = outlineView.makeViewWithIdentifier("HeaderCell", owner: self) as! NSTableCellView
             view.textField?.stringValue = group.getName()
+            
+            if (group.getExpanded()) {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.outlineView.expandItem(item, expandChildren: false)
+                });
+            }
             
             return view
         case let host as Host:
@@ -113,11 +138,35 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         
         if (object is Host) {
             let host:Host = object as! Host
-            detailController.changeHost(host)
+            self.setHost(host, connect: false)
         }
         else if (object is Group){
             let group:Group = object as! Group
             detailController.changeGroup(group)
+        }
+    }
+    
+    /** Action **/
+    
+    @IBAction func doubleClickItem(sender: AnyObject) {
+        let item = sender.itemAtRow(sender.clickedRow)
+        
+        // Si c'est un group, je l'ouvre ou je le ferme et j'enregistre
+        if (item is Group) {
+            let group:Group = item as! Group
+            
+            if sender.isItemExpanded(item) {
+                sender.collapseItem(item)
+                group.setExpandedValue(false)
+            } else {
+                sender.expandItem(item)
+                group.setExpandedValue(true)
+            }
+        }
+        // Si c'est un hote, je me connecte
+        else if (item is Host) {
+            let host:Host = item as! Host
+            self.setHost(host, connect: true)
         }
     }
 }

@@ -10,14 +10,35 @@ import Foundation
 import RealmSwift
 
 class Data {
-    private static let singleton:Data = Data()
+    private static var singleton:Data? = nil
     private var groups: [Group] = []
     
     class func getSingleton() -> Data {
-        return Data.singleton
+        if (Data.singleton == nil) {
+            Data.singleton = Data()
+        }
+        
+        return Data.singleton!
     }
     
     private init() {
+        // Gestion des migration
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    migration.enumerate(Group.className()) { oldObject, newObject in
+                        if (oldObject!["expanded"] != nil) {
+                            newObject!["expanded"] = oldObject!["expanded"]
+                        }
+                        else {
+                            newObject!["expanded"] = true
+                        }
+                    }
+                }
+        })
+        
+        Realm.Configuration.defaultConfiguration = config
         self.loadData()
     }
     
@@ -29,40 +50,13 @@ class Data {
         let groupsToSort = realm.objects(Group.self)
         for g in groupsToSort {
             if (g.getParent() == nil) {
-                groups.append(self.copyGroup(g))
+                groups.append(g.copyIt())
             }
         }
         
         if groups.isEmpty {
             groups.append(Group().populate("My first group"))
         }
-    }
-    
-    func copyGroup(group:Group) -> Group {
-        let groupC:Group = Group()
-        groupC.setNameValue(group.getName())
-        
-        // Mise à jour des hosts
-        for h in group.getHosts() {
-            groupC.addHost(self.copyHost(h))
-        }
-        
-        // Mise à jour des groupes
-        for g in group.getGroups() {
-            groupC.addGroup(self.copyGroup(g))
-        }
-        
-        return groupC
-    }
-    
-    func copyHost(host:Host) -> Host {
-        let hostC:Host = Host();
-        hostC.setHostValue(host.getHost())
-        hostC.setNameValue(host.getName())
-        hostC.setPasswordValue(host.getPassword())
-        hostC.setUsernameValue(host.getUsername())
-        
-        return hostC
     }
     
     /// Sauvegarde les données dans un fichier

@@ -12,8 +12,7 @@ import RealmSwift
 class Group: Object {
     dynamic var name:String = ""
     dynamic var parent:Group? = nil
-    /*var groups:[Group] = []
-    var hosts:[Host] = []*/
+    dynamic var expanded:Bool = true
     
     var groups:List<Group> = List<Group>()
     var hosts:List<Host> = List<Host>()
@@ -21,6 +20,10 @@ class Group: Object {
     func populate(name:String) -> Group {
         self.name = name
         return self
+    }
+    
+    func getExpanded() -> Bool {
+        return expanded
     }
     
     func getParent() -> Group? {
@@ -91,5 +94,27 @@ class Group: Object {
     
     func setNameValue(value:String) {
         name = value
+    }
+    
+    func setExpandedValue(value:Bool) {
+        expanded = value
+    }
+    
+    func copyIt() -> Group {
+        let groupC:Group = Group()
+        groupC.setNameValue(self.getName())
+        groupC.setExpandedValue(self.getExpanded())
+        
+        // Mise à jour des hosts
+        for h in self.getHosts() {
+            groupC.addHost(h.copyIt())
+        }
+        
+        // Mise à jour des groupes
+        for g in self.getGroups() {
+            groupC.addGroup(g.copyIt())
+        }
+        
+        return groupC
     }
 }

@@ -63,4 +63,14 @@ class Host: Object {
     func setPasswordValue(value:String) {
         password = value
     }
+    
+    func copyIt() -> Host {
+        let hostC:Host = Host();
+        hostC.setHostValue(self.getHost())
+        hostC.setNameValue(self.getName())
+        hostC.setPasswordValue(self.getPassword())
+        hostC.setUsernameValue(self.getUsername())
+        
+        return hostC
+    }
 }

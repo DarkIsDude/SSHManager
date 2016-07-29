@@ -136,7 +136,7 @@
                                     <rect key="frame" x="1" y="1" width="198" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="iMM-55-tam" id="rPM-FS-qka">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" autosaveExpandedItems="YES" outlineTableColumn="iMM-55-tam" id="rPM-FS-qka">
                                             <rect key="frame" x="0.0" y="0.0" width="198" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -199,6 +199,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="doubleClickItem:" target="5Hf-1P-d4S" id="nRC-rz-i5P"/>
                                                 <outlet property="dataSource" destination="5Hf-1P-d4S" id="fGc-Ss-Lrc"/>
                                                 <outlet property="delegate" destination="5Hf-1P-d4S" id="Bsh-9v-OEm"/>
                                             </connections>

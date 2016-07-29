@@ -11,7 +11,7 @@ import Cocoa
 
 class DetailController : NSViewController {
     
-    let data = Data.getSingleton()
+    var data:Data? = nil
     var groupSelected:Group? = nil
     var hostSelected:Host? = nil
     
@@ -28,9 +28,12 @@ class DetailController : NSViewController {
     @IBOutlet weak var parentField: NSPopUpButton!
     
     override func viewDidLoad() {
+        data = Data.getSingleton()
         super.viewDidLoad()
     }
 
+    /** Action **/
+    
     @IBAction func addHost(sender: AnyObject) {
         groupSelected?.addHost(Host().populate("New HOST", host: "", username: "", password: ""))
         reloadList()
@@ -44,7 +47,7 @@ class DetailController : NSViewController {
     @IBAction func remove(sender: AnyObject) {
         if (groupSelected != nil) {
             groupSelected?.getParent()?.removeGroup(groupSelected!)
-            data.removeRootGroup(groupSelected!)
+            data!.removeRootGroup(groupSelected!)
         }
         else {
             hostSelected?.getParent().removeHost(hostSelected!)
@@ -58,14 +61,14 @@ class DetailController : NSViewController {
             groupSelected?.setNameValue(nameField.stringValue)
             
             groupSelected?.getParent()?.removeGroup(groupSelected!)
-            data.removeRootGroup(groupSelected!)
+            data!.removeRootGroup(groupSelected!)
             groupSelected?.setParentToRoot()
             
             if (parentField.selectedItem?.title != "ROOT") {
-                data.getGroup(parentField.selectedItem!.title)!.addGroup(groupSelected!)
+                data!.getGroup(parentField.selectedItem!.title)!.addGroup(groupSelected!)
             }
             else {
-                data.addRootGroup(groupSelected!)
+                data!.addRootGroup(groupSelected!)
             }
         }
         else {
@@ -75,45 +78,17 @@ class DetailController : NSViewController {
             hostSelected?.setUsernameValue(usernameField.stringValue)
             
             hostSelected?.getParent().removeHost(hostSelected!)
-            data.getGroup(parentField.selectedItem!.title)?.addHost(hostSelected!)
+            data!.getGroup(parentField.selectedItem!.title)?.addHost(hostSelected!)
         }
 
         reloadList()
     }
     
     @IBAction func connect(sender: AnyObject) {
-        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp.sh")
-        let pathFile = fileURL.path
-        
-        do {
-            var write = "#!/usr/bin/expect -f\n"
-            write = write + "spawn ssh " + usernameField.stringValue + "@" + hostField.stringValue + "\n"
-            write = write + "match_max 100000\n"
-            write = write + "expect \"*?assword:*\"\n"
-            write = write + "send -- \"" + passwordField.stringValue + "\r\"\n"
-            write = write + "interact\n"
-            
-            try write.writeToFile(pathFile!, atomically: false, encoding: NSUTF8StringEncoding)
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
-        }
-        
-        let taskChmod = NSTask()
-        taskChmod.launchPath = "/bin/chmod"
-        taskChmod.arguments = ["+x", pathFile!]
-        taskChmod.launch()
-        taskChmod.waitUntilExit()
-        
-        // TODO change iTerm by...
-        let taskOpen = NSTask()
-        taskOpen.launchPath = "/usr/bin/open"
-        taskOpen.arguments = ["-a", "/Applications/iTerm.app", pathFile!]
-        taskOpen.launch()
-        taskOpen.waitUntilExit()
-        
-        // Don't delete the file (Directory is temp)
+        self.connect()
     }
+    
+    /** Others **/
     
     func changeHost(host: Host) {
         groupSelected = nil
@@ -130,7 +105,7 @@ class DetailController : NSViewController {
         
         parentField.enabled = true
         parentField.removeAllItems()
-        for g in data.getAllGroups() {
+        for g in data!.getAllGroups() {
             parentField.addItemWithTitle(g.getName())
         }
         parentField.selectItemWithTitle(host.getParent().getName())
@@ -158,7 +133,7 @@ class DetailController : NSViewController {
         parentField.enabled = true
         parentField.removeAllItems()
         parentField.addItemWithTitle("ROOT")
-        for g in data.getAllGroups() {
+        for g in data!.getAllGroups() {
             parentField.addItemWithTitle(g.getName())
         }
         
@@ -176,8 +151,42 @@ class DetailController : NSViewController {
         removeButton.enabled = true
     }
     
+    func connect() {
+        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp.sh")
+        let pathFile = fileURL.path
+        
+        do {
+            var write = "#!/usr/bin/expect -f\n"
+            write = write + "spawn ssh " + hostSelected!.getUsername() + "@" + hostSelected!.getHost() + "\n"
+            write = write + "match_max 100000\n"
+            write = write + "expect \"*?assword:*\"\n"
+            write = write + "send -- \"" + hostSelected!.getPassword() + "\r\"\n"
+            write = write + "interact\n"
+            
+            try write.writeToFile(pathFile!, atomically: false, encoding: NSUTF8StringEncoding)
+        }
+        catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
+        
+        let taskChmod = NSTask()
+        taskChmod.launchPath = "/bin/chmod"
+        taskChmod.arguments = ["+x", pathFile!]
+        taskChmod.launch()
+        taskChmod.waitUntilExit()
+        
+        // TODO change iTerm by...
+        let taskOpen = NSTask()
+        taskOpen.launchPath = "/usr/bin/open"
+        taskOpen.arguments = ["-a", "/Applications/iTerm.app", pathFile!]
+        taskOpen.launch()
+        taskOpen.waitUntilExit()
+        
+        // Don't delete the file (Directory is temp)
+    }
+    
     func reloadList() {
-        data.save()
+        data!.save()
         
         let splitViewController = self.parentViewController as! NSSplitViewController
         let listController = splitViewController.childViewControllers[0] as! ListController
