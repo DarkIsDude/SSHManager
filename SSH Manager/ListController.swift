@@ -29,11 +29,22 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
     }
     
+    func hideOrShowDetail() {
+        let splitViewController = self.parentViewController as! NSSplitViewController
+        splitViewController.splitViewItems[1].collapsed = !splitViewController.splitViewItems[1].collapsed
+        NSUserDefaults.standardUserDefaults().setBool(splitViewController.splitViewItems[1].collapsed, forKey: "hideOrShowDetail")
+    }
+    
     /** NSViewController **/
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         data = Data.getSingleton()
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey("hideOrShowDetail") {
+            hideOrShowDetail()
+        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideOrShowDetail), name: "hideOrShowDetail", object: nil)
     }
     
     override var representedObject: AnyObject? {

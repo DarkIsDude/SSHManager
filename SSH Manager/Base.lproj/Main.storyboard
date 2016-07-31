@@ -62,11 +62,6 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kDP-uG-kae"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="EpQ-Cu-zRg">
-                                            <connections>
-                                                <action selector="performClose:" target="Ady-hI-5gd" id="fHb-c8-194"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Save" keyEquivalent="s" id="o7D-cn-vuM">
                                             <connections>
                                                 <action selector="saveDocument:" target="Ady-hI-5gd" id="ARa-mK-2Tx"/>
@@ -320,6 +315,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
+                                        <menuItem title="Hide or show detail" keyEquivalent="w" id="jJa-dI-jep">
+                                            <connections>
+                                                <action selector="hideOrShowDetail:" target="Voe-Tx-rLC" id="f0h-9j-cZm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="e3Y-kE-Ypf"/>
                                         <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                             <connections>
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
@@ -369,11 +370,12 @@
             <objects>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="SSH Manager" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="WindowSSHManager" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="550" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="200" height="200"/>
                     </window>
                     <connections>
                         <segue destination="C2A-sR-hfj" kind="relationship" relationship="window.shadowedContentViewController" id="9uL-LD-Jor"/>
@@ -390,11 +392,12 @@
                         <splitViewItem id="Msx-M0-f3b"/>
                         <splitViewItem id="H9W-dc-IsQ"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="t6Z-13-ofK">
+                    <splitView key="splitView" identifier="SplitViewSSHManager" autosaveName="SplitViewMainSSHManager" dividerStyle="thin" vertical="YES" id="t6Z-13-ofK">
                         <rect key="frame" x="0.0" y="0.0" width="550" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
                     <connections>
+                        <outlet property="splitView" destination="t6Z-13-ofK" id="hMg-Qy-kft"/>
                         <segue destination="5Hf-1P-d4S" kind="relationship" relationship="splitItems" id="YAx-Mp-974"/>
                         <segue destination="JN6-Pg-3Lg" kind="relationship" relationship="splitItems" id="8RQ-dS-8k9"/>
                     </connections>

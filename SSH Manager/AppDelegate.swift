@@ -21,5 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         data = Data.getSingleton()
         data!.save()
     }
+    
+    @IBAction func hideOrShowDetail(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("hideOrShowDetail", object: nil)
+    }
 }
 
