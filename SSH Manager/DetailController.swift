@@ -85,7 +85,7 @@ class DetailController : NSViewController {
     }
     
     @IBAction func connect(sender: AnyObject) {
-        self.connect()
+        hostSelected!.connect()
     }
     
     /** Others **/
@@ -151,43 +151,7 @@ class DetailController : NSViewController {
         removeButton.enabled = true
     }
     
-    func connect() {
-        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp.sh")
-        let pathFile = fileURL.path
-        
-        do {
-            var write = "#!/usr/bin/expect -f\n"
-            write = write + "spawn ssh " + hostSelected!.getUsername() + "@" + hostSelected!.getHost() + "\n"
-            write = write + "match_max 100000\n"
-            write = write + "expect \"*?assword:*\"\n"
-            write = write + "send -- \"" + hostSelected!.getPassword() + "\r\"\n"
-            write = write + "interact\n"
-            
-            try write.writeToFile(pathFile!, atomically: false, encoding: NSUTF8StringEncoding)
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
-        }
-        
-        let taskChmod = NSTask()
-        taskChmod.launchPath = "/bin/chmod"
-        taskChmod.arguments = ["+x", pathFile!]
-        taskChmod.launch()
-        taskChmod.waitUntilExit()
-        
-        // TODO change iTerm by...
-        let taskOpen = NSTask()
-        taskOpen.launchPath = "/usr/bin/open"
-        taskOpen.arguments = ["-a", "/Applications/iTerm.app", pathFile!]
-        taskOpen.launch()
-        taskOpen.waitUntilExit()
-        
-        // Don't delete the file (Directory is temp)
-    }
-    
     func reloadList() {
-        data!.save()
-        
         let splitViewController = self.parentViewController as! NSSplitViewController
         let listController = splitViewController.childViewControllers[0] as! ListController
 

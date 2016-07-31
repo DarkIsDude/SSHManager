@@ -73,4 +73,38 @@ class Host: Object {
         
         return hostC
     }
+    
+    func connect() {
+        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp.sh")
+        let pathFile = fileURL.path
+        
+        do {
+            var write = "#!/usr/bin/expect -f\n"
+            write = write + "spawn ssh " + self.getUsername() + "@" + self.getHost() + "\n"
+            write = write + "match_max 100000\n"
+            write = write + "expect \"*?assword:*\"\n"
+            write = write + "send -- \"" + self.getPassword() + "\r\"\n"
+            write = write + "interact\n"
+            
+            try write.writeToFile(pathFile!, atomically: false, encoding: NSUTF8StringEncoding)
+        }
+        catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
+        
+        let taskChmod = NSTask()
+        taskChmod.launchPath = "/bin/chmod"
+        taskChmod.arguments = ["+x", pathFile!]
+        taskChmod.launch()
+        taskChmod.waitUntilExit()
+        
+        // TODO change iTerm by...
+        let taskOpen = NSTask()
+        taskOpen.launchPath = "/usr/bin/open"
+        taskOpen.arguments = ["-a", "/Applications/iTerm.app", pathFile!]
+        taskOpen.launch()
+        taskOpen.waitUntilExit()
+        
+        // Don't delete the file (Directory is temp)
+    }
 }

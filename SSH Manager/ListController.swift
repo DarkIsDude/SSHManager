@@ -13,19 +13,27 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     @IBOutlet weak var outlineView: NSOutlineView!
     
     var data:Data? = nil
+    var groupSelected:Group? = nil
+    var hostSelected:Host? = nil
     
     func reloadData() {
-        data!.save()
         self.outlineView.reloadData()
     }
     
-    func setHost(host:Host, connect: Bool) {
+    func setDetail() -> Bool {
         let splitViewController = self.parentViewController as! NSSplitViewController
-        let detailController = splitViewController.childViewControllers[1] as! DetailController
+        return !splitViewController.splitView.isSubviewCollapsed(splitViewController.splitViewItems[1].viewController.view)
+    }
+    
+    func setHost(host:Host, connect: Bool) {
+        if (setDetail()) {
+            let splitViewController = self.parentViewController as! NSSplitViewController
+            let detailController = splitViewController.childViewControllers[1] as! DetailController
+            detailController.changeHost(host)
+        }
         
-        detailController.changeHost(host)
         if (connect) {
-            detailController.connect()
+            host.connect()
         }
     }
     
@@ -144,16 +152,18 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         let selectedIndex = notification.object?.selectedRow
         let object:AnyObject? = notification.object?.itemAtRow(selectedIndex!)
         
-        let splitViewController = self.parentViewController as! NSSplitViewController
-        let detailController = splitViewController.childViewControllers[1] as! DetailController
-        
         if (object is Host) {
             let host:Host = object as! Host
             self.setHost(host, connect: false)
         }
-        else if (object is Group){
+        else if (object is Group) {
             let group:Group = object as! Group
-            detailController.changeGroup(group)
+            
+            if (setDetail()) {
+                let splitViewController = self.parentViewController as! NSSplitViewController
+                let detailController = splitViewController.childViewControllers[1] as! DetailController
+                detailController.changeGroup(group)
+            }
         }
     }
     
