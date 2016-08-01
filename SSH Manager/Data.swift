@@ -69,10 +69,17 @@ class Data {
     func save() {
         let realm = try! Realm()
         let groupsToDelete = realm.objects(Group.self)
+        let hostsToDelete = realm.objects(Host.self)
         
         try! realm.write {
             for g in groupsToDelete {
                 realm.delete(g)
+            }
+        }
+        
+        try! realm.write {
+            for h in hostsToDelete {
+                realm.delete(h)
             }
         }
         
