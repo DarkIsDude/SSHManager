@@ -13,7 +13,8 @@ class Host: Object {
     dynamic var name:String = ""
     dynamic var host:String = ""
     dynamic var username:String = ""
-    dynamic var password: String = ""
+    dynamic var password:String = ""
+    dynamic var icon:String = "NSComputer"
     dynamic var parent:Group? = Group()
     
     func populate (name:String, host:String, username:String, password:String) -> Host {
@@ -44,8 +45,16 @@ class Host: Object {
         return password
     }
     
+    func getIcon() -> String {
+        return icon
+    }
+    
     func setParentValue(value:Group) {
         parent = value
+    }
+    
+    func setIconValue(value:String) {
+        icon = value
     }
     
     func setNameValue(value:String) {
@@ -70,6 +79,7 @@ class Host: Object {
         hostC.setNameValue(self.getName())
         hostC.setPasswordValue(self.getPassword())
         hostC.setUsernameValue(self.getUsername())
+        hostC.setIconValue(self.getIcon())
         
         return hostC
     }

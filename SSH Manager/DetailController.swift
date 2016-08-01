@@ -26,13 +26,24 @@ class DetailController : NSViewController {
     @IBOutlet weak var usernameField: NSTextField!
     @IBOutlet weak var passwordField: NSSecureTextField!
     @IBOutlet weak var parentField: NSPopUpButton!
+    @IBOutlet weak var iconField: NSComboBox!
+    
+    @IBOutlet weak var iconPreview: NSImageView!
     
     override func viewDidLoad() {
         data = Data.getSingleton()
         super.viewDidLoad()
+        
+        iconField.removeAllItems()
+        for i in self.getAllNSImageName() {
+            iconField.addItemWithObjectValue(i)
+        }
     }
 
     /** Action **/
+    @IBAction func changeIcon(sender: AnyObject) {
+        iconPreview.image = NSImage(named: iconField.objectValueOfSelectedItem as! String)
+    }
     
     @IBAction func addHost(sender: AnyObject) {
         groupSelected?.addHost(Host().populate("New HOST", host: "", username: "", password: ""))
@@ -76,6 +87,7 @@ class DetailController : NSViewController {
             hostSelected?.setPasswordValue(passwordField.stringValue)
             hostSelected?.setHostValue(hostField.stringValue)
             hostSelected?.setUsernameValue(usernameField.stringValue)
+            hostSelected?.setIconValue(iconField.objectValueOfSelectedItem as! String)
             
             hostSelected?.getParent().removeHost(hostSelected!)
             data!.getGroup(parentField.selectedItem!.title)?.addHost(hostSelected!)
@@ -102,6 +114,9 @@ class DetailController : NSViewController {
         usernameField.enabled = true
         passwordField.stringValue = host.getPassword()
         passwordField.enabled = true
+        iconField.selectItemWithObjectValue(host.getIcon())
+        iconPreview.image = NSImage(named: host.getIcon())
+        iconField.enabled = true
         
         parentField.enabled = true
         parentField.removeAllItems()
@@ -129,6 +144,9 @@ class DetailController : NSViewController {
         usernameField.enabled = false
         passwordField.stringValue = ""
         passwordField.enabled = false
+        iconField.selectItemWithObjectValue("NSApplicationIcon")
+        iconPreview.image = NSImage(named: "NSApplicationIcon")
+        iconField.enabled = false
         
         parentField.enabled = true
         parentField.removeAllItems()
@@ -156,5 +174,69 @@ class DetailController : NSViewController {
         let listController = splitViewController.childViewControllers[0] as! ListController
 
         listController.reloadData()
+    }
+    
+    func getAllNSImageName() -> [String] {
+        return [
+            NSImageNameQuickLookTemplate,
+            NSImageNameBluetoothTemplate,
+            NSImageNameIChatTheaterTemplate,
+            NSImageNameSlideshowTemplate,
+            NSImageNameActionTemplate,
+            NSImageNameSmartBadgeTemplate,
+            NSImageNameIconViewTemplate,
+            NSImageNameListViewTemplate,
+            NSImageNameColumnViewTemplate,
+            NSImageNameFlowViewTemplate,
+            NSImageNamePathTemplate,
+            NSImageNameInvalidDataFreestandingTemplate,
+            NSImageNameLockLockedTemplate,
+            NSImageNameLockUnlockedTemplate,
+            NSImageNameGoRightTemplate,
+            NSImageNameGoLeftTemplate,
+            NSImageNameRightFacingTriangleTemplate,
+            NSImageNameLeftFacingTriangleTemplate,
+            NSImageNameAddTemplate,
+            NSImageNameRemoveTemplate,
+            NSImageNameRevealFreestandingTemplate,
+            NSImageNameFollowLinkFreestandingTemplate,
+            NSImageNameEnterFullScreenTemplate,
+            NSImageNameExitFullScreenTemplate,
+            NSImageNameStopProgressTemplate,
+            NSImageNameStopProgressFreestandingTemplate,
+            NSImageNameRefreshTemplate,
+            NSImageNameRefreshFreestandingTemplate,
+            NSImageNameBonjour,
+            NSImageNameComputer,
+            NSImageNameFolderBurnable,
+            NSImageNameFolderSmart,
+            NSImageNameFolder,
+            NSImageNameNetwork,
+            NSImageNameMobileMe,
+            NSImageNameMultipleDocuments,
+            NSImageNameUserAccounts,
+            NSImageNamePreferencesGeneral,
+            NSImageNameAdvanced,
+            NSImageNameInfo,
+            NSImageNameFontPanel,
+            NSImageNameColorPanel,
+            NSImageNameUser,
+            NSImageNameUserGroup,
+            NSImageNameEveryone,
+            NSImageNameUserGuest,
+            NSImageNameMenuOnStateTemplate,
+            NSImageNameMenuMixedStateTemplate,
+            NSImageNameApplicationIcon,
+            NSImageNameTrashEmpty,
+            NSImageNameTrashFull,
+            NSImageNameHomeTemplate,
+            NSImageNameBookmarksTemplate,
+            NSImageNameCaution,
+            NSImageNameStatusAvailable,
+            NSImageNameStatusPartiallyAvailable,
+            NSImageNameStatusUnavailable,
+            NSImageNameStatusNone,
+            NSImageNameShareTemplate
+        ]
     }
 }

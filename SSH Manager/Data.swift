@@ -24,7 +24,7 @@ class Data {
     private init() {
         // Gestion des migration
         let config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
                     migration.enumerate(Group.className()) { oldObject, newObject in
@@ -34,6 +34,12 @@ class Data {
                         else {
                             newObject!["expanded"] = true
                         }
+                    }
+                }
+                
+                if (oldSchemaVersion < 2) {
+                    migration.enumerate(Host.className()) { oldObject, newObject in
+                        newObject!["icon"] = "NSComputer"
                     }
                 }
         })

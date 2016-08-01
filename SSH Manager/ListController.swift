@@ -132,6 +132,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         case let host as Host:
             let view = outlineView.makeViewWithIdentifier("DataCell", owner: self) as! NSTableCellView
             view.textField?.stringValue = host.getName()
+            (view.subviews[0] as! NSImageView).image = NSImage(named: host.getIcon())
             
             return view
         default:
