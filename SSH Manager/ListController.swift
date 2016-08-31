@@ -33,7 +33,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
         
         if (connect) {
-            host.connect()
+            host.connectSSH()
         }
     }
     

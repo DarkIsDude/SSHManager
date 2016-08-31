@@ -15,7 +15,8 @@ class DetailController : NSViewController {
     var groupSelected:Group? = nil
     var hostSelected:Host? = nil
     
-    @IBOutlet weak var connectButton: NSButton!
+    @IBOutlet weak var connectSFTPButton: NSButton!
+    @IBOutlet weak var connectSSHButton: NSButton!
     @IBOutlet weak var addHostButton: NSButton!
     @IBOutlet weak var addGroupButton: NSButton!
     @IBOutlet weak var saveButton: NSButton!
@@ -96,8 +97,12 @@ class DetailController : NSViewController {
         reloadList()
     }
     
-    @IBAction func connect(sender: AnyObject) {
-        hostSelected!.connect()
+    @IBAction func connectSHH(sender: AnyObject) {
+        hostSelected!.connectSSH()
+    }
+    
+    @IBAction func connectSFTP(sender: AnyObject) {
+        hostSelected!.connectSFTP()
     }
     
     /** Others **/
@@ -125,7 +130,8 @@ class DetailController : NSViewController {
         }
         parentField.selectItemWithTitle(host.getParent().getName())
         
-        connectButton.enabled = true
+        connectSSHButton.enabled = true
+        connectSFTPButton.enabled = true
         addHostButton.enabled = false
         addGroupButton.enabled = false
         saveButton.enabled = true
@@ -162,7 +168,8 @@ class DetailController : NSViewController {
             parentField.selectItemWithTitle(group.getParent()!.getName())
         }
         
-        connectButton.enabled = false
+        connectSSHButton.enabled = false
+        connectSFTPButton.enabled = false
         addHostButton.enabled = true
         addGroupButton.enabled = true
         saveButton.enabled = true

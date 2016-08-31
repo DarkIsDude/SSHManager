@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A313a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -596,17 +596,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mUg-Zt-eyw">
-                                <rect key="frame" x="121" y="217" width="209" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="XcI-81-WtO"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name" drawsBackground="YES" id="ZQ5-QS-lFr">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sRm-rw-1F3">
                                 <rect key="frame" x="18" y="220" width="97" height="17"/>
                                 <constraints>
@@ -620,16 +609,16 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HSo-Jc-KoX">
-                                <rect key="frame" x="135" y="252" width="81" height="32"/>
+                                <rect key="frame" x="183" y="252" width="81" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="dDu-NB-LOh"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wv8-gf-tBj">
+                                <buttonCell key="cell" type="push" title="SSH" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wv8-gf-tBj">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="connect:" target="JN6-Pg-3Lg" id="NUG-Xz-9wT"/>
+                                    <action selector="connectSHH:" target="JN6-Pg-3Lg" id="VFz-AA-Zi6"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EBM-LQ-pzi">
@@ -724,7 +713,7 @@
                                 </textFieldCell>
                             </textField>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xZj-Wa-1Zw">
-                                <rect key="frame" x="149" y="56" width="182" height="26"/>
+                                <rect key="frame" x="149" y="56" width="184" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5FZ-Sf-GsJ"/>
                                 </constraints>
@@ -750,6 +739,31 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="cKa-Qg-4wz"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0dU-03-6fH">
+                                <rect key="frame" x="264" y="252" width="72" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="XsP-Fb-DTv"/>
+                                    <constraint firstAttribute="height" constant="21" id="iZr-6p-pF9"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="SFTP" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I3l-Al-DdR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="connectSFTP:" target="JN6-Pg-3Lg" id="SMl-Tk-z2L"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mUg-Zt-eyw">
+                                <rect key="frame" x="121" y="217" width="209" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="XcI-81-WtO"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name" drawsBackground="YES" id="ZQ5-QS-lFr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sRm-rw-1F3" firstAttribute="top" secondItem="niB-Im-QCq" secondAttribute="top" constant="63" id="0pW-fb-afY"/>
@@ -760,8 +774,8 @@
                             <constraint firstItem="djS-I4-sFx" firstAttribute="leading" secondItem="niB-Im-QCq" secondAttribute="leading" constant="20" id="78x-S4-QPn"/>
                             <constraint firstItem="kch-r4-dkS" firstAttribute="leading" secondItem="llo-rD-lXA" secondAttribute="trailing" constant="8" id="9t2-Ar-70t"/>
                             <constraint firstItem="djS-I4-sFx" firstAttribute="top" secondItem="m20-0f-9wO" secondAttribute="bottom" constant="15" id="ATO-K5-jV1"/>
+                            <constraint firstItem="0dU-03-6fH" firstAttribute="top" secondItem="niB-Im-QCq" secondAttribute="top" constant="20" id="BiL-d0-fhd"/>
                             <constraint firstItem="mUg-Zt-eyw" firstAttribute="leading" secondItem="sRm-rw-1F3" secondAttribute="trailing" constant="8" id="E6z-hN-UQu"/>
-                            <constraint firstItem="HSo-Jc-KoX" firstAttribute="centerX" secondItem="niB-Im-QCq" secondAttribute="centerX" id="ENJ-m0-Cyw"/>
                             <constraint firstItem="mUg-Zt-eyw" firstAttribute="top" secondItem="HSo-Jc-KoX" secondAttribute="bottom" constant="20" id="Fl9-hZ-Ffo"/>
                             <constraint firstItem="m20-0f-9wO" firstAttribute="top" secondItem="nm6-h2-OXi" secondAttribute="bottom" constant="15" id="H9D-8b-zfd"/>
                             <constraint firstItem="Ltn-5v-tuA" firstAttribute="top" secondItem="H07-RC-eIo" secondAttribute="bottom" constant="10" id="K0F-SC-fhD"/>
@@ -773,14 +787,16 @@
                             <constraint firstItem="H07-RC-eIo" firstAttribute="top" secondItem="OjG-Iz-ELO" secondAttribute="bottom" constant="10" id="Sow-Xx-3wJ"/>
                             <constraint firstItem="oaY-wJ-bYt" firstAttribute="top" secondItem="djS-I4-sFx" secondAttribute="bottom" constant="15" id="U1l-eQ-dP4"/>
                             <constraint firstItem="H07-RC-eIo" firstAttribute="leading" secondItem="m20-0f-9wO" secondAttribute="trailing" constant="8" id="VP4-Pv-qvH"/>
+                            <constraint firstItem="0dU-03-6fH" firstAttribute="leading" secondItem="HSo-Jc-KoX" secondAttribute="trailing" constant="12" id="Vja-zo-kvE"/>
                             <constraint firstItem="kch-r4-dkS" firstAttribute="top" secondItem="3ci-wI-yGW" secondAttribute="bottom" constant="10" id="di9-m7-nC7"/>
                             <constraint firstAttribute="trailing" secondItem="H07-RC-eIo" secondAttribute="trailing" constant="20" id="drE-Q3-MYD"/>
                             <constraint firstAttribute="trailing" secondItem="EBM-LQ-pzi" secondAttribute="trailing" constant="22" id="eSC-5P-49c"/>
                             <constraint firstItem="3ci-wI-yGW" firstAttribute="leading" secondItem="oaY-wJ-bYt" secondAttribute="trailing" constant="8" id="eYq-YI-nE7"/>
                             <constraint firstItem="oaY-wJ-bYt" firstAttribute="leading" secondItem="niB-Im-QCq" secondAttribute="leading" constant="20" id="hGZ-wm-gBc"/>
                             <constraint firstItem="dCe-jH-3mS" firstAttribute="leading" secondItem="niB-Im-QCq" secondAttribute="leading" constant="20" id="hwh-Vt-WYs"/>
+                            <constraint firstAttribute="trailing" secondItem="0dU-03-6fH" secondAttribute="trailing" constant="20" id="ilA-Uu-mob"/>
                             <constraint firstAttribute="bottom" secondItem="dCe-jH-3mS" secondAttribute="bottom" constant="20" id="juz-Oe-RTQ"/>
-                            <constraint firstAttribute="trailing" secondItem="xZj-Wa-1Zw" secondAttribute="trailing" constant="22" id="k0c-0c-HAE"/>
+                            <constraint firstAttribute="trailing" secondItem="xZj-Wa-1Zw" secondAttribute="trailing" constant="20" id="k0c-0c-HAE"/>
                             <constraint firstAttribute="trailing" secondItem="OjG-Iz-ELO" secondAttribute="trailing" constant="20" id="k6Y-Rv-KS5"/>
                             <constraint firstAttribute="trailing" secondItem="Ltn-5v-tuA" secondAttribute="trailing" constant="20" id="kVd-lN-Cdc"/>
                             <constraint firstAttribute="trailing" secondItem="3ci-wI-yGW" secondAttribute="trailing" constant="20" id="nAu-DH-xPw"/>
@@ -799,7 +815,8 @@
                     <connections>
                         <outlet property="addGroupButton" destination="EBM-LQ-pzi" id="Cs0-GB-3LI"/>
                         <outlet property="addHostButton" destination="78Y-Zz-uRF" id="Ljv-jr-C0W"/>
-                        <outlet property="connectButton" destination="HSo-Jc-KoX" id="wZx-Kk-380"/>
+                        <outlet property="connectSFTPButton" destination="0dU-03-6fH" id="Rsd-iq-5QB"/>
+                        <outlet property="connectSSHButton" destination="HSo-Jc-KoX" id="pe2-Ru-BfN"/>
                         <outlet property="hostField" destination="OjG-Iz-ELO" id="ItH-jv-6DR"/>
                         <outlet property="iconField" destination="xZj-Wa-1Zw" id="ocN-rq-8Ri"/>
                         <outlet property="iconPreview" destination="kch-r4-dkS" id="9SQ-J8-4Yw"/>

@@ -8,6 +8,7 @@
 
 import Cocoa
 import RealmSwift
+import Foundation
 
 class Host: Object {
     dynamic var name:String = ""
@@ -84,7 +85,7 @@ class Host: Object {
         return hostC
     }
     
-    func connect() {
+    func connectSSH() {
         let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp.sh")
         let pathFile = fileURL.path
         
@@ -116,5 +117,14 @@ class Host: Object {
         taskOpen.waitUntilExit()
         
         // Don't delete the file (Directory is temp)
+    }
+    
+    func connectSFTP() {
+        let task = NSTask()
+        task.launchPath = "/usr/bin/env"
+        task.arguments = ["/Applications/FileZilla.app/Contents/MacOS/filezilla", "sftp://" + self.getUsername() + ":" + self.getPassword() + "@" + self.getHost()]
+        task.launch()
+        
+        // TODO
     }
 }
