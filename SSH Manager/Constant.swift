@@ -49,8 +49,8 @@ class Constant {
     
     // SFTP
     static func getSFTPPath() -> String {
-        if (NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SSH) != nil) {
-            return NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SSH)!
+        if (NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SFTP) != nil) {
+            return NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SFTP)!
         }
         else {
             return "/Applications/FileZilla.app/Contents/MacOS/filezilla";
@@ -58,6 +58,6 @@ class Constant {
     }
     
     static func setSFTPPath(value:String) {
-        NSUserDefaults.standardUserDefaults().setValue(value, forKey: Constant.PARAM_APP_SSH)
+        NSUserDefaults.standardUserDefaults().setValue(value, forKey: Constant.PARAM_APP_SFTP)
     }
 }
