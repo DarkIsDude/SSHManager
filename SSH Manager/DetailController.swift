@@ -68,7 +68,7 @@ class DetailController : NSViewController {
         reloadList()
     }
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func refresh(sender: AnyObject) {
         if (groupSelected != nil) {
             groupSelected?.setNameValue(nameField.stringValue)
             

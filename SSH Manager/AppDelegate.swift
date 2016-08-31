@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func hideOrShowDetail(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("hideOrShowDetail", object: nil)
+        Constant.changeShowDetail()
     }
 }
 

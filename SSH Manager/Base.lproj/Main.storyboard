@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="h1y-NJ-u2b"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="CDi-If-5HO"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="CDi-If-5HO">
+                                            <connections>
+                                                <segue destination="x7d-JI-VIG" kind="show" id="Bf3-l1-jan"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="J5q-ZV-C4w"/>
                                         <menuItem title="Services" id="t4S-OV-gAN">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -385,6 +389,92 @@
             </objects>
             <point key="canvasLocation" x="75" y="-3"/>
         </scene>
+        <!--Preference Window Controller-->
+        <scene sceneID="bxK-5R-sMh">
+            <objects>
+                <windowController id="x7d-JI-VIG" userLabel="Preference Window Controller" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="9Gr-oQ-0dh">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="128"/>
+                        <rect key="screenRect" x="-1920" y="-30" width="1920" height="1080"/>
+                    </window>
+                    <connections>
+                        <segue destination="4bY-G7-V7V" kind="relationship" relationship="window.shadowedContentViewController" id="99y-Rv-uzM"/>
+                    </connections>
+                </windowController>
+                <customObject id="6wx-nA-zF5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="-302"/>
+        </scene>
+        <!--Preference Controller-->
+        <scene sceneID="Jju-Y0-AkX">
+            <objects>
+                <viewController id="4bY-G7-V7V" userLabel="Preference Controller" customClass="PreferenceController" customModule="SSH_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="1if-B0-RvW">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="128"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gp-io-aCn">
+                                <rect key="frame" x="18" y="89" width="136" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Application SSH" id="asK-FX-Toj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5KF-eS-8O0">
+                                <rect key="frame" x="18" y="59" width="136" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Application SFTP" id="d4t-OU-ft0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mLB-vg-W35">
+                                <rect key="frame" x="160" y="56" width="300" height="22"/>
+                                <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="O3f-s9-AAx">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file://localhost/Applications/"/>
+                                    <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
+                                </pathCell>
+                                <connections>
+                                    <action selector="changeSFTPApplication:" target="4bY-G7-V7V" id="MNN-PE-DLc"/>
+                                </connections>
+                            </pathControl>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAm-As-IIe">
+                                <rect key="frame" x="16" y="16" width="188" height="22"/>
+                                <buttonCell key="cell" type="check" title="Hide or show detail ( ⌘W )" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EsC-bm-lfC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeViewOrHideDetail:" target="4bY-G7-V7V" id="tAe-Iv-9MV"/>
+                                </connections>
+                            </button>
+                            <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gf-U8-FXn">
+                                <rect key="frame" x="160" y="86" width="300" height="22"/>
+                                <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="GTR-af-kXU">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file://localhost/Applications/"/>
+                                    <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
+                                </pathCell>
+                                <connections>
+                                    <action selector="changeSSHApplication:" target="4bY-G7-V7V" id="Fzn-JZ-9UA"/>
+                                </connections>
+                            </pathControl>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="buttonHideOrShowDetail" destination="hAm-As-IIe" id="F6e-R4-WMl"/>
+                        <outlet property="pathSFTP" destination="mLB-vg-W35" id="ART-cl-A3l"/>
+                        <outlet property="pathSSH" destination="2gf-U8-FXn" id="4JV-fm-EIk"/>
+                    </connections>
+                </viewController>
+                <customObject id="1TF-PZ-igX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1303" y="-291"/>
+        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -667,7 +757,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="78Y-Zz-uRF">
-                                <rect key="frame" x="169" y="19" width="67" height="19"/>
+                                <rect key="frame" x="178" y="19" width="67" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="C6B-aA-uXm"/>
                                     <constraint firstAttribute="width" constant="67" id="Wgi-u8-mWk"/>
@@ -703,22 +793,8 @@
                                     <menu key="menu" id="OV3-3x-lb1"/>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-jH-3mS">
-                                <rect key="frame" x="20" y="19" width="42" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="8Mz-tM-hcP"/>
-                                    <constraint firstAttribute="height" constant="18" id="q7X-6A-eGo"/>
-                                </constraints>
-                                <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="N5d-BF-SBm">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="save:" target="JN6-Pg-3Lg" id="QBy-0H-FbY"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-Yh-PcX">
-                                <rect key="frame" x="70" y="19" width="59" height="19"/>
+                                <rect key="frame" x="86" y="19" width="59" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Qry-Wh-9JF"/>
                                     <constraint firstAttribute="width" constant="59" id="Ufc-lH-xQo"/>
@@ -784,6 +860,20 @@
                                     <action selector="changeIcon:" target="JN6-Pg-3Lg" id="Dbs-Ca-IFV"/>
                                 </connections>
                             </comboBox>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-jH-3mS">
+                                <rect key="frame" x="20" y="19" width="58" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="8Mz-tM-hcP"/>
+                                    <constraint firstAttribute="height" constant="18" id="q7X-6A-eGo"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundRect" title="Refresh" bezelStyle="roundedRect" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="N5d-BF-SBm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <connections>
+                                        <action selector="refresh:" target="JN6-Pg-3Lg" id="PHP-sS-MJe"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sRm-rw-1F3" firstAttribute="top" secondItem="niB-Im-QCq" secondAttribute="top" constant="63" id="0pW-fb-afY"/>
@@ -800,7 +890,7 @@
                             <constraint firstItem="m20-0f-9wO" firstAttribute="top" secondItem="nm6-h2-OXi" secondAttribute="bottom" constant="15" id="H9D-8b-zfd"/>
                             <constraint firstItem="Ltn-5v-tuA" firstAttribute="top" secondItem="H07-RC-eIo" secondAttribute="bottom" constant="10" id="K0F-SC-fhD"/>
                             <constraint firstAttribute="bottom" secondItem="78Y-Zz-uRF" secondAttribute="bottom" constant="20" id="LkH-Xi-ynX"/>
-                            <constraint firstItem="EBM-LQ-pzi" firstAttribute="leading" secondItem="78Y-Zz-uRF" secondAttribute="trailing" constant="17" id="MTV-ge-rBX"/>
+                            <constraint firstItem="EBM-LQ-pzi" firstAttribute="leading" secondItem="78Y-Zz-uRF" secondAttribute="trailing" constant="8" id="MTV-ge-rBX"/>
                             <constraint firstItem="llo-rD-lXA" firstAttribute="leading" secondItem="niB-Im-QCq" secondAttribute="leading" constant="20" id="NWY-tj-ehb"/>
                             <constraint firstItem="sRm-rw-1F3" firstAttribute="leading" secondItem="niB-Im-QCq" secondAttribute="leading" constant="20" id="P6P-z2-8bf"/>
                             <constraint firstItem="nm6-h2-OXi" firstAttribute="leading" secondItem="niB-Im-QCq" secondAttribute="leading" constant="20" id="Qal-nP-oOg"/>

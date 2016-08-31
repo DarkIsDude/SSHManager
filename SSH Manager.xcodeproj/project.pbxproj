@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		DB0EB9BD1D0F4E2E0007B6BC /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */; };
 		DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BE1D0F54FA0007B6BC /* Group.swift */; };
+		DB2A6F271D76F66500C1F705 /* PreferenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A6F261D76F66500C1F705 /* PreferenceController.swift */; };
 		DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB342EB81D1282A6003B00F0 /* DetailController.swift */; };
+		DB8FD20F1D76FD0E0072CD82 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8FD20E1D76FD0E0072CD82 /* Constant.swift */; };
 		DBB5EF311D4905120065B6B1 /* images in Resources */ = {isa = PBXBuildFile; fileRef = DBB5EF301D4905120065B6B1 /* images */; };
 		DBB5EF371D4A078B0065B6B1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB5EF361D4A078B0065B6B1 /* Data.swift */; };
 		DBC85D581D4A7ABF0072EF35 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D561D4A7ABF0072EF35 /* Realm.framework */; };
@@ -59,7 +61,9 @@
 /* Begin PBXFileReference section */
 		DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		DB0EB9BE1D0F54FA0007B6BC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		DB2A6F261D76F66500C1F705 /* PreferenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceController.swift; sourceTree = "<group>"; };
 		DB342EB81D1282A6003B00F0 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		DB8FD20E1D76FD0E0072CD82 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DBB5EF301D4905120065B6B1 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		DBB5EF361D4A078B0065B6B1 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		DBC85D561D4A7ABF0072EF35 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -105,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB8FD20D1D76FCFF0072CD82 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				DB8FD20E1D76FD0E0072CD82 /* Constant.swift */,
+			);
+			name = tools;
+			sourceTree = "<group>";
+		};
 		DBB5EF341D490A150065B6B1 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 			children = (
 				DBD4F4EC1D0F336800AE98B4 /* ListController.swift */,
 				DB342EB81D1282A6003B00F0 /* DetailController.swift */,
+				DB2A6F261D76F66500C1F705 /* PreferenceController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -149,6 +162,7 @@
 		DBD4F4E91D0F336800AE98B4 /* SSH Manager */ = {
 			isa = PBXGroup;
 			children = (
+				DB8FD20D1D76FCFF0072CD82 /* tools */,
 				DBB5EF351D490A260065B6B1 /* controller */,
 				DBB5EF341D490A150065B6B1 /* model */,
 				DBB5EF301D4905120065B6B1 /* images */,
@@ -313,6 +327,8 @@
 				DBB5EF371D4A078B0065B6B1 /* Data.swift in Sources */,
 				DB0EB9BD1D0F4E2E0007B6BC /* Host.swift in Sources */,
 				DBD4F4ED1D0F336800AE98B4 /* ListController.swift in Sources */,
+				DB8FD20F1D76FD0E0072CD82 /* Constant.swift in Sources */,
+				DB2A6F271D76F66500C1F705 /* PreferenceController.swift in Sources */,
 				DBD4F4EB1D0F336800AE98B4 /* AppDelegate.swift in Sources */,
 				DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */,
 				DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */,

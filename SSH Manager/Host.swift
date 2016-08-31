@@ -112,7 +112,7 @@ class Host: Object {
         // TODO change iTerm by...
         let taskOpen = NSTask()
         taskOpen.launchPath = "/usr/bin/open"
-        taskOpen.arguments = ["-a", "/Applications/iTerm.app", pathFile!]
+        taskOpen.arguments = ["-a", Constant.getSSHPath(), pathFile!]
         taskOpen.launch()
         taskOpen.waitUntilExit()
         
@@ -122,7 +122,7 @@ class Host: Object {
     func connectSFTP() {
         let task = NSTask()
         task.launchPath = "/usr/bin/env"
-        task.arguments = ["/Applications/FileZilla.app/Contents/MacOS/filezilla", "sftp://" + self.getUsername() + ":" + self.getPassword() + "@" + self.getHost()]
+        task.arguments = [Constant.getSFTPPath(), "sftp://" + self.getUsername() + ":" + self.getPassword() + "@" + self.getHost()]
         task.launch()
         
         // TODO

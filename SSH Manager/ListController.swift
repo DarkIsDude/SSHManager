@@ -39,8 +39,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     
     func hideOrShowDetail() {
         let splitViewController = self.parentViewController as! NSSplitViewController
-        splitViewController.splitViewItems[1].collapsed = !splitViewController.splitViewItems[1].collapsed
-        NSUserDefaults.standardUserDefaults().setBool(splitViewController.splitViewItems[1].collapsed, forKey: "hideOrShowDetail")
+        splitViewController.splitViewItems[1].collapsed = !Constant.isShowDetail()
     }
     
     /** NSViewController **/
@@ -49,10 +48,8 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         super.viewDidLoad()
         data = Data.getSingleton()
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("hideOrShowDetail") {
-            hideOrShowDetail()
-        }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideOrShowDetail), name: "hideOrShowDetail", object: nil)
+        hideOrShowDetail()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideOrShowDetail), name: Constant.PARAM_HIDE_OR_SHOW_DETAIL, object: nil)
     }
     
     override var representedObject: AnyObject? {
