@@ -11,25 +11,45 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="SSH Manager" id="1Xt-HY-uBw">
+                            <menuItem title="SSH Manager" id="How-Xc-khM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="SSH Manager" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="SSH Manager" id="uln-d0-Urt">
                                     <items>
-                                        <menuItem title="About SSH Manager" id="5kV-Vb-QxS">
+                                        <menuItem title="About SSH Manager" id="Iej-5B-FGc">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="5md-ud-c9g"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Services" id="NMo-om-nkz">
+                                        <menuItem isSeparatorItem="YES" id="h1y-NJ-u2b"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="CDi-If-5HO"/>
+                                        <menuItem isSeparatorItem="YES" id="J5q-ZV-C4w"/>
+                                        <menuItem title="Services" id="t4S-OV-gAN">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="iyj-29-a3S"/>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Quit SSH Manager" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem isSeparatorItem="YES" id="p9f-WG-2En"/>
+                                        <menuItem title="Hide Application" keyEquivalent="h" id="9eM-HI-7uz">
                                             <connections>
-                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="tFW-qh-alY"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="pW1-27-nV8">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="D5w-ed-LoQ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="RZD-cm-eA4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="WXM-SF-5Nz"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="GJC-Ya-jFf"/>
+                                        <menuItem title="Quit Application" keyEquivalent="q" id="aCk-qT-dyh">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="SPV-rq-Vix"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -492,7 +512,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6uU-lX-E8B">
-                                    <rect key="frame" x="1" y="284" width="198" height="15"/>
+                                    <rect key="frame" x="1" y="283" width="198" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="JSV-Rf-Nmu">
@@ -524,7 +544,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-Iz-ELO">
+                            <textField verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-Iz-ELO">
                                 <rect key="frame" x="121" y="185" width="209" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="893-hI-lLK"/>
@@ -535,7 +555,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H07-RC-eIo">
+                            <textField verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="H07-RC-eIo">
                                 <rect key="frame" x="121" y="153" width="209" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="pEL-GH-qNN"/>
@@ -570,7 +590,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ltn-5v-tuA">
+                            <secureTextField verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ltn-5v-tuA">
                                 <rect key="frame" x="121" y="121" width="209" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="MdX-fX-4vd"/>
@@ -594,6 +614,17 @@
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="mUg-Zt-eyw">
+                                <rect key="frame" x="121" y="217" width="209" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="XcI-81-WtO"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name" drawsBackground="YES" id="ZQ5-QS-lFr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sRm-rw-1F3">
@@ -661,7 +692,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ci-wI-yGW">
+                            <popUpButton verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="3ci-wI-yGW">
                                 <rect key="frame" x="119" y="87" width="214" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="PYP-RD-Rbt"/>
@@ -712,25 +743,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xZj-Wa-1Zw">
-                                <rect key="frame" x="149" y="56" width="184" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="5FZ-Sf-GsJ"/>
-                                </constraints>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="YqY-CJ-vRi">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                                <connections>
-                                    <action selector="changeIcon:" target="JN6-Pg-3Lg" id="Dbs-Ca-IFV"/>
-                                </connections>
-                            </comboBox>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kch-r4-dkS">
                                 <rect key="frame" x="121" y="60" width="20" height="20"/>
                                 <constraints>
@@ -753,17 +765,25 @@
                                     <action selector="connectSFTP:" target="JN6-Pg-3Lg" id="SMl-Tk-z2L"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mUg-Zt-eyw">
-                                <rect key="frame" x="121" y="217" width="209" height="22"/>
+                            <comboBox verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="xZj-Wa-1Zw">
+                                <rect key="frame" x="149" y="56" width="184" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="XcI-81-WtO"/>
+                                    <constraint firstAttribute="height" constant="20" id="5FZ-Sf-GsJ"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name" drawsBackground="YES" id="ZQ5-QS-lFr">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="YqY-CJ-vRi">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                                <connections>
+                                    <action selector="changeIcon:" target="JN6-Pg-3Lg" id="Dbs-Ca-IFV"/>
+                                </connections>
+                            </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sRm-rw-1F3" firstAttribute="top" secondItem="niB-Im-QCq" secondAttribute="top" constant="63" id="0pW-fb-afY"/>
