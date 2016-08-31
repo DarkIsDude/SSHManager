@@ -5,3 +5,7 @@ Le but est d'offrir un manager de connection SSH simple et rapide d'emploi. Pour
 # Particularité
 
 Pour pouvoir me connecter sur les serveurs de mon entreprise et avoir un encodage correct, j'ai du désactiver l'option ’Set locale variables automatically’.
+
+# Configuration
+
+Le projet fonctionne par défaut avec iTerm2 pour se connecter sur les machines en SSH et FileZilla pour le SFTP. **FileZilla a été choisi car ni Transmit ni CyberDuck ne supporte la configuration d'une connection par ligne de commande**.
