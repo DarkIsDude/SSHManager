@@ -16,7 +16,7 @@ class Constant {
     
     // Hide Or Show Detail
     static func isShowDetail() -> Bool {
-        if NSUserDefaults.standardUserDefaults().boolForKey(Constant.PARAM_HIDE_OR_SHOW_DETAIL) {
+        if UserDefaults.standard.bool(forKey: Constant.PARAM_HIDE_OR_SHOW_DETAIL) {
             return true
         }
         else {
@@ -28,36 +28,36 @@ class Constant {
         Constant.changeShowDetail(!Constant.isShowDetail())
     }
     
-    static func changeShowDetail(value:Bool) {
-        NSUserDefaults.standardUserDefaults().setBool(value, forKey: Constant.PARAM_HIDE_OR_SHOW_DETAIL)
-        NSNotificationCenter.defaultCenter().postNotificationName(Constant.PARAM_HIDE_OR_SHOW_DETAIL, object: value)
+    static func changeShowDetail(_ value:Bool) {
+        UserDefaults.standard.set(value, forKey: Constant.PARAM_HIDE_OR_SHOW_DETAIL)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Constant.PARAM_HIDE_OR_SHOW_DETAIL), object: value)
     }
     
     // SSH
     static func getSSHPath() -> String {
-        if (NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SSH) != nil) {
-            return NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SSH)!
+        if (UserDefaults.standard.string(forKey: Constant.PARAM_APP_SSH) != nil) {
+            return UserDefaults.standard.string(forKey: Constant.PARAM_APP_SSH)!
         }
         else {
             return "/Applications/iTerm.app";
         }
     }
     
-    static func setSSHPath(value:String) {
-        NSUserDefaults.standardUserDefaults().setValue(value, forKey: Constant.PARAM_APP_SSH)
+    static func setSSHPath(_ value:String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.PARAM_APP_SSH)
     }
     
     // SFTP
     static func getSFTPPath() -> String {
-        if (NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SFTP) != nil) {
-            return NSUserDefaults.standardUserDefaults().stringForKey(Constant.PARAM_APP_SFTP)!
+        if (UserDefaults.standard.string(forKey: Constant.PARAM_APP_SFTP) != nil) {
+            return UserDefaults.standard.string(forKey: Constant.PARAM_APP_SFTP)!
         }
         else {
             return "/Applications/FileZilla.app/Contents/MacOS/filezilla";
         }
     }
     
-    static func setSFTPPath(value:String) {
-        NSUserDefaults.standardUserDefaults().setValue(value, forKey: Constant.PARAM_APP_SFTP)
+    static func setSFTPPath(_ value:String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.PARAM_APP_SFTP)
     }
 }

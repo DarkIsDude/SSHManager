@@ -10,8 +10,8 @@ import Foundation
 import RealmSwift
 
 class Data {
-    private static var singleton:Data? = nil
-    private var groups: [Group] = []
+    fileprivate static var singleton:Data? = nil
+    fileprivate var groups: [Group] = []
     
     class func getSingleton() -> Data {
         if (Data.singleton == nil) {
@@ -21,13 +21,13 @@ class Data {
         return Data.singleton!
     }
     
-    private init() {
+    fileprivate init() {
         // Gestion des migration
         let config = Realm.Configuration(
             schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
-                    migration.enumerate(Group.className()) { oldObject, newObject in
+                    migration.enumerateObjects(ofType: Group.className()) { oldObject, newObject in
                         if (oldObject!["expanded"] != nil) {
                             newObject!["expanded"] = oldObject!["expanded"]
                         }
@@ -38,7 +38,7 @@ class Data {
                 }
                 
                 if (oldSchemaVersion < 2) {
-                    migration.enumerate(Host.className()) { oldObject, newObject in
+                    migration.enumerateObjects(ofType: Host.className()) { oldObject, newObject in
                         newObject!["icon"] = "NSComputer"
                     }
                 }
@@ -49,7 +49,7 @@ class Data {
     }
     
     // Je dois tout copier pour éviter des erreurs lors dans les threads
-    private func loadData() {
+    fileprivate func loadData() {
         let realm = try! Realm()
         groups = []
         
@@ -108,7 +108,7 @@ class Data {
         return groupsOnly
     }
     
-    func getAllGroups(groups:[Group], element:Group) -> [Group] {
+    func getAllGroups(_ groups:[Group], element:Group) -> [Group] {
         var groupsOnly:[Group] = groups
         groupsOnly.append(element)
         
@@ -120,7 +120,7 @@ class Data {
     }
     
     /// Retourne le group portant le name ou nil
-    func getGroup(name:String) -> Group? {
+    func getGroup(_ name:String) -> Group? {
         var groupFind:Group? = nil
         var i:Int = 0
         
@@ -136,7 +136,7 @@ class Data {
         return groupFind
     }
     
-    func getGroup(name:String, group:Group) -> Group? {
+    func getGroup(_ name:String, group:Group) -> Group? {
         var groupFind:Group? = nil
         
         if (group.getName() == name) {
@@ -159,20 +159,20 @@ class Data {
     }
     
     // Fonction de gestion des groupes
-    func addRootGroup(group:Group) {
+    func addRootGroup(_ group:Group) {
         if (findIndex(group) < 0) {
             self.groups.append(group)
         }
     }
     
-    func removeRootGroup(group:Group) {
+    func removeRootGroup(_ group:Group) {
         let i:Int = findIndex(group)
         if (i > 0) {
-            groups.removeAtIndex(i)
+            groups.remove(at: i)
         }
     }
     
-    private func findIndex(group:Group) -> Int {
+    fileprivate func findIndex(_ group:Group) -> Int {
         var find:Bool = false;
         var i:Int = 0;
         

@@ -17,7 +17,7 @@ class Group: Object {
     var groups:List<Group> = List<Group>()
     var hosts:List<Host> = List<Host>()
     
-    func populate(name:String) -> Group {
+    func populate(_ name:String) -> Group {
         self.name = name
         return self
     }
@@ -42,17 +42,17 @@ class Group: Object {
         return hosts
     }
     
-    func addHost(host:Host) {
+    func addHost(_ host:Host) {
         hosts.append(host)
         host.setParentValue(self)
     }
     
-    func addGroup(group:Group) {
+    func addGroup(_ group:Group) {
         groups.append(group)
         group.parent = self
     }
     
-    func removeGroup(group:Group) {
+    func removeGroup(_ group:Group) {
         var find:Bool = false;
         var i:Int = 0;
         
@@ -66,11 +66,11 @@ class Group: Object {
         }
         
         if (find) {
-            groups.removeAtIndex(i)
+            groups.remove(at: i)
         }
     }
     
-    func removeHost(host:Host) {
+    func removeHost(_ host:Host) {
         var find:Bool = false;
         var i:Int = 0;
         
@@ -84,7 +84,7 @@ class Group: Object {
         }
         
         if (find) {
-            hosts.removeAtIndex(i)
+            hosts.remove(at: i)
         }
     }
     
@@ -92,11 +92,11 @@ class Group: Object {
         self.parent = nil
     }
     
-    func setNameValue(value:String) {
+    func setNameValue(_ value:String) {
         name = value
     }
     
-    func setExpandedValue(value:Bool) {
+    func setExpandedValue(_ value:Bool) {
         expanded = value
     }
     

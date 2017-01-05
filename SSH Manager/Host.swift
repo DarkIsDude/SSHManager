@@ -18,7 +18,7 @@ class Host: Object {
     dynamic var icon:String = "NSComputer"
     dynamic var parent:Group? = Group()
     
-    func populate (name:String, host:String, username:String, password:String) -> Host {
+    func populate (_ name:String, host:String, username:String, password:String) -> Host {
         self.name = name
         self.host = host
         self.username = username
@@ -50,27 +50,27 @@ class Host: Object {
         return icon
     }
     
-    func setParentValue(value:Group) {
+    func setParentValue(_ value:Group) {
         parent = value
     }
     
-    func setIconValue(value:String) {
+    func setIconValue(_ value:String) {
         icon = value
     }
     
-    func setNameValue(value:String) {
+    func setNameValue(_ value:String) {
         name = value
     }
     
-    func setHostValue(value:String) {
+    func setHostValue(_ value:String) {
         host = value
     }
     
-    func setUsernameValue(value:String) {
+    func setUsernameValue(_ value:String) {
         username = value
     }
     
-    func setPasswordValue(value:String) {
+    func setPasswordValue(_ value:String) {
         password = value
     }
     
@@ -86,7 +86,7 @@ class Host: Object {
     }
     
     func connectSSH() {
-        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("temp.sh")
+        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.sh")
         let pathFile = fileURL.path
         
         do {
@@ -97,22 +97,22 @@ class Host: Object {
             write = write + "send -- \"" + self.getPassword() + "\r\"\n"
             write = write + "interact\n"
             
-            try write.writeToFile(pathFile!, atomically: false, encoding: NSUTF8StringEncoding)
+            try write.write(toFile: pathFile, atomically: false, encoding: String.Encoding.utf8)
         }
         catch let error as NSError {
             print("Ooops! Something went wrong: \(error)")
         }
         
-        let taskChmod = NSTask()
+        let taskChmod = Process()
         taskChmod.launchPath = "/bin/chmod"
-        taskChmod.arguments = ["+x", pathFile!]
+        taskChmod.arguments = ["+x", pathFile]
         taskChmod.launch()
         taskChmod.waitUntilExit()
         
         // TODO change iTerm by...
-        let taskOpen = NSTask()
+        let taskOpen = Process()
         taskOpen.launchPath = "/usr/bin/open"
-        taskOpen.arguments = ["-a", Constant.getSSHPath(), pathFile!]
+        taskOpen.arguments = ["-a", Constant.getSSHPath(), pathFile]
         taskOpen.launch()
         taskOpen.waitUntilExit()
         
@@ -120,7 +120,7 @@ class Host: Object {
     }
     
     func connectSFTP() {
-        let task = NSTask()
+        let task = Process()
         task.launchPath = "/usr/bin/env"
         task.arguments = [Constant.getSFTPPath(), "sftp://" + self.getUsername() + ":" + self.getPassword() + "@" + self.getHost()]
         task.launch()

@@ -11,13 +11,11 @@
 		DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BE1D0F54FA0007B6BC /* Group.swift */; };
 		DB2A6F271D76F66500C1F705 /* PreferenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A6F261D76F66500C1F705 /* PreferenceController.swift */; };
 		DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB342EB81D1282A6003B00F0 /* DetailController.swift */; };
+		DB6115BF1E1E9E5C00D2C202 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6115BA1E1E9DC200D2C202 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DB6115C11E1E9E5F00D2C202 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6115BB1E1E9DC200D2C202 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DB8FD20F1D76FD0E0072CD82 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8FD20E1D76FD0E0072CD82 /* Constant.swift */; };
 		DBB5EF311D4905120065B6B1 /* images in Resources */ = {isa = PBXBuildFile; fileRef = DBB5EF301D4905120065B6B1 /* images */; };
 		DBB5EF371D4A078B0065B6B1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB5EF361D4A078B0065B6B1 /* Data.swift */; };
-		DBC85D581D4A7ABF0072EF35 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D561D4A7ABF0072EF35 /* Realm.framework */; };
-		DBC85D591D4A7ABF0072EF35 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D561D4A7ABF0072EF35 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DBC85D5A1D4A7ABF0072EF35 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */; };
-		DBC85D5B1D4A7ABF0072EF35 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBD4F4EB1D0F336800AE98B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4F4EA1D0F336800AE98B4 /* AppDelegate.swift */; };
 		DBD4F4ED1D0F336800AE98B4 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4F4EC1D0F336800AE98B4 /* ListController.swift */; };
 		DBD4F4EF1D0F336800AE98B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD4F4EE1D0F336800AE98B4 /* Assets.xcassets */; };
@@ -50,8 +48,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DBC85D5B1D4A7ABF0072EF35 /* RealmSwift.framework in Embed Frameworks */,
-				DBC85D591D4A7ABF0072EF35 /* Realm.framework in Embed Frameworks */,
+				DB6115C11E1E9E5F00D2C202 /* RealmSwift.framework in Embed Frameworks */,
+				DB6115BF1E1E9E5C00D2C202 /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,11 +61,11 @@
 		DB0EB9BE1D0F54FA0007B6BC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		DB2A6F261D76F66500C1F705 /* PreferenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceController.swift; sourceTree = "<group>"; };
 		DB342EB81D1282A6003B00F0 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		DB6115BA1E1E9DC200D2C202 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		DB6115BB1E1E9DC200D2C202 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		DB8FD20E1D76FD0E0072CD82 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DBB5EF301D4905120065B6B1 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		DBB5EF361D4A078B0065B6B1 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		DBC85D561D4A7ABF0072EF35 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		DBD4F4E71D0F336800AE98B4 /* SSH Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SSH Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD4F4EA1D0F336800AE98B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD4F4EC1D0F336800AE98B4 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
@@ -87,8 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBC85D5A1D4A7ABF0072EF35 /* RealmSwift.framework in Frameworks */,
-				DBC85D581D4A7ABF0072EF35 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +136,8 @@
 		DBD4F4DE1D0F336800AE98B4 = {
 			isa = PBXGroup;
 			children = (
-				DBC85D561D4A7ABF0072EF35 /* Realm.framework */,
-				DBC85D571D4A7ABF0072EF35 /* RealmSwift.framework */,
+				DB6115BA1E1E9DC200D2C202 /* Realm.framework */,
+				DB6115BB1E1E9DC200D2C202 /* RealmSwift.framework */,
 				DBD4F4E91D0F336800AE98B4 /* SSH Manager */,
 				DBD4F4FB1D0F336800AE98B4 /* SSH ManagerTests */,
 				DBD4F5061D0F336800AE98B4 /* SSH ManagerUITests */,
@@ -256,18 +252,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Edouard COMTET";
 				TargetAttributes = {
 					DBD4F4E61D0F336800AE98B4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					DBD4F4F71D0F336800AE98B4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = DBD4F4E61D0F336800AE98B4;
 					};
 					DBD4F5021D0F336800AE98B4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = DBD4F4E61D0F336800AE98B4;
 					};
 				};
@@ -392,8 +391,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -437,8 +438,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -457,6 +460,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -473,6 +477,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -489,6 +494,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -501,6 +507,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSH Manager.app/Contents/MacOS/SSH Manager";
 			};
 			name = Debug;
@@ -514,6 +521,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSH Manager.app/Contents/MacOS/SSH Manager";
 			};
 			name = Release;
@@ -526,6 +534,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "SSH Manager";
 			};
 			name = Debug;
@@ -538,6 +547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Doudou-Design.SSH-ManagerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "SSH Manager";
 			};
 			name = Release;

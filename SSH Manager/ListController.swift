@@ -21,13 +21,13 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     }
     
     func setDetail() -> Bool {
-        let splitViewController = self.parentViewController as! NSSplitViewController
+        let splitViewController = self.parent as! NSSplitViewController
         return !splitViewController.splitView.isSubviewCollapsed(splitViewController.splitViewItems[1].viewController.view)
     }
     
-    func setHost(host:Host, connect: Bool) {
+    func setHost(_ host:Host, connect: Bool) {
         if (setDetail()) {
-            let splitViewController = self.parentViewController as! NSSplitViewController
+            let splitViewController = self.parent as! NSSplitViewController
             let detailController = splitViewController.childViewControllers[1] as! DetailController
             detailController.changeHost(host)
         }
@@ -38,8 +38,8 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     }
     
     func hideOrShowDetail() {
-        let splitViewController = self.parentViewController as! NSSplitViewController
-        splitViewController.splitViewItems[1].collapsed = !Constant.isShowDetail()
+        let splitViewController = self.parent as! NSSplitViewController
+        splitViewController.splitViewItems[1].isCollapsed = !Constant.isShowDetail()
     }
     
     /** NSViewController **/
@@ -49,10 +49,10 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         data = Data.getSingleton()
         
         hideOrShowDetail()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideOrShowDetail), name: Constant.PARAM_HIDE_OR_SHOW_DETAIL, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideOrShowDetail), name: NSNotification.Name(rawValue: Constant.PARAM_HIDE_OR_SHOW_DETAIL), object: nil)
     }
     
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
             // Update the view, if already loaded.
         }
@@ -60,20 +60,20 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     
     /** NSOutlineViewDelegate, NSOutlineViewDataSource **/
     
-    func outlineViewItemWillExpand(notification: NSNotification) {
-        let o:AnyObject = (notification.userInfo?.first?.1)!
+    func outlineViewItemWillExpand(_ notification: Notification) {
+        let o:AnyObject = ((notification as NSNotification).userInfo?.first?.1)! as AnyObject
         let group:Group = o as! Group
         group.setExpandedValue(true)
     }
     
-    func outlineViewItemWillCollapse(notification: NSNotification) {
-        let o:AnyObject = (notification.userInfo?.first?.1)!
+    func outlineViewItemWillCollapse(_ notification: Notification) {
+        let o:AnyObject = ((notification as NSNotification).userInfo?.first?.1)! as AnyObject
         let group:Group = o as! Group
         group.setExpandedValue(false)
     }
     
-    func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
-        if let item: AnyObject = item {
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        if let item: AnyObject = item as AnyObject? {
             switch item {
                 case let group as Group:
                     if (index >= group.getGroups().count) {
@@ -91,7 +91,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         switch item {
         case let group as Group:
             return ((group.getHosts().count + group.getGroups().count) > 0) ? true : false
@@ -100,8 +100,8 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
-        if let item: AnyObject = item {
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        if let item: AnyObject = item as AnyObject? {
             switch item {
                 case let group as Group:
                     return (group.getHosts().count + group.getGroups().count)
@@ -113,21 +113,21 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, viewForTableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
+    func outlineView(_ outlineView: NSOutlineView, viewFor viewForTableColumn: NSTableColumn?, item: Any) -> NSView? {
         switch item {
         case let group as Group:
-            let view = outlineView.makeViewWithIdentifier("HeaderCell", owner: self) as! NSTableCellView
+            let view = outlineView.make(withIdentifier: "HeaderCell", owner: self) as! NSTableCellView
             view.textField?.stringValue = group.getName()
             
             if (group.getExpanded()) {
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     self.outlineView.expandItem(item, expandChildren: false)
                 });
             }
             
             return view
         case let host as Host:
-            let view = outlineView.makeViewWithIdentifier("DataCell", owner: self) as! NSTableCellView
+            let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
             view.textField?.stringValue = host.getName()
             (view.subviews[0] as! NSImageView).image = NSImage(named: host.getIcon())
             
@@ -137,7 +137,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, isGroupItem item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
             case let group as Group:
                 return (group.getParent() == nil) ? true : false
@@ -146,9 +146,9 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         }
     }
     
-    func outlineViewSelectionDidChange(notification: NSNotification) {
-        let selectedIndex = notification.object?.selectedRow
-        let object:AnyObject? = notification.object?.itemAtRow(selectedIndex!)
+    func outlineViewSelectionDidChange(_ notification: Notification) {
+        let selectedIndex = (notification.object as AnyObject).selectedRow
+        let object:Any? = (notification.object as AnyObject).item(atRow: selectedIndex!)
         
         if (object is Host) {
             let host:Host = object as! Host
@@ -158,7 +158,7 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
             let group:Group = object as! Group
             
             if (setDetail()) {
-                let splitViewController = self.parentViewController as! NSSplitViewController
+                let splitViewController = self.parent as! NSSplitViewController
                 let detailController = splitViewController.childViewControllers[1] as! DetailController
                 detailController.changeGroup(group)
             }
@@ -167,8 +167,8 @@ class ListController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
     
     /** Action **/
     
-    @IBAction func doubleClickItem(sender: AnyObject) {
-        let item = sender.itemAtRow(sender.clickedRow)
+    @IBAction func doubleClickItem(_ sender: AnyObject) {
+        let item = sender.item(atRow: sender.clickedRow)
         
         // Si c'est un group, je l'ouvre ou je le ferme et j'enregistre
         if (item is Group) {

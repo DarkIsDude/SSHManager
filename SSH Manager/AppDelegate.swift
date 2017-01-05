@@ -13,16 +13,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var data:Data? = nil
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         data = Data.getSingleton()
         data!.save()
     }
     
-    @IBAction func hideOrShowDetail(sender: AnyObject) {
+    @IBAction func hideOrShowDetail(_ sender: AnyObject) {
         Constant.changeShowDetail()
     }
 }

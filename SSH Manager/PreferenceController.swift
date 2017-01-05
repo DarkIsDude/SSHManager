@@ -24,41 +24,41 @@ class PreferenceController : NSViewController {
             buttonHideOrShowDetail.state = 0
         }
         
-        pathSSH.URL = NSURL(fileURLWithPath: Constant.getSSHPath())
-        pathSFTP.URL = NSURL(fileURLWithPath: Constant.getSFTPPath())
+        pathSSH.url = URL(fileURLWithPath: Constant.getSSHPath())
+        pathSFTP.url = URL(fileURLWithPath: Constant.getSFTPPath())
     }
     
-    @IBAction func changeViewOrHideDetail(sender: AnyObject) {
+    @IBAction func changeViewOrHideDetail(_ sender: AnyObject) {
         Constant.changeShowDetail()
     }
     
-    @IBAction func changeSSHApplication(sender: AnyObject) {
+    @IBAction func changeSSHApplication(_ sender: AnyObject) {
         let dialog: NSOpenPanel = NSOpenPanel()
         dialog.canChooseDirectories = false
         dialog.canChooseFiles = true
         dialog.allowsMultipleSelection = false
         dialog.runModal()
         
-        let path = dialog.URL?.path
+        let path = dialog.url?.path
         
         if (path != nil) {
             Constant.setSSHPath(path!)
-            pathSSH.URL = dialog.URL
+            pathSSH.url = dialog.url
         }
     }
     
-    @IBAction func changeSFTPApplication(sender: AnyObject) {
+    @IBAction func changeSFTPApplication(_ sender: AnyObject) {
         let dialog: NSOpenPanel = NSOpenPanel()
         dialog.canChooseDirectories = false
         dialog.canChooseFiles = true
         dialog.allowsMultipleSelection = false
         dialog.runModal()
         
-        let path = dialog.URL?.path
+        let path = dialog.url?.path
         
         if (path != nil) {
             Constant.setSFTPPath(path!)
-            pathSSH.URL = dialog.URL
+            pathSSH.url = dialog.url
         }
     }
     

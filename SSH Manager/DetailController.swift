@@ -37,26 +37,26 @@ class DetailController : NSViewController {
         
         iconField.removeAllItems()
         for i in self.getAllNSImageName() {
-            iconField.addItemWithObjectValue(i)
+            iconField.addItem(withObjectValue: i)
         }
     }
 
     /** Action **/
-    @IBAction func changeIcon(sender: AnyObject) {
+    @IBAction func changeIcon(_ sender: AnyObject) {
         iconPreview.image = NSImage(named: iconField.objectValueOfSelectedItem as! String)
     }
     
-    @IBAction func addHost(sender: AnyObject) {
+    @IBAction func addHost(_ sender: AnyObject) {
         groupSelected?.addHost(Host().populate("New HOST", host: "", username: "", password: ""))
         reloadList()
     }
     
-    @IBAction func addGroup(sender: AnyObject) {
+    @IBAction func addGroup(_ sender: AnyObject) {
         groupSelected?.addGroup(Group().populate("New GROUP"))
         reloadList()
     }
     
-    @IBAction func remove(sender: AnyObject) {
+    @IBAction func remove(_ sender: AnyObject) {
         if (groupSelected != nil) {
             groupSelected?.getParent()?.removeGroup(groupSelected!)
             data!.removeRootGroup(groupSelected!)
@@ -68,7 +68,7 @@ class DetailController : NSViewController {
         reloadList()
     }
     
-    @IBAction func refresh(sender: AnyObject) {
+    @IBAction func refresh(_ sender: AnyObject) {
         if (groupSelected != nil) {
             groupSelected?.setNameValue(nameField.stringValue)
             
@@ -97,87 +97,87 @@ class DetailController : NSViewController {
         reloadList()
     }
     
-    @IBAction func connectSHH(sender: AnyObject) {
+    @IBAction func connectSHH(_ sender: AnyObject) {
         hostSelected!.connectSSH()
     }
     
-    @IBAction func connectSFTP(sender: AnyObject) {
+    @IBAction func connectSFTP(_ sender: AnyObject) {
         hostSelected!.connectSFTP()
     }
     
     /** Others **/
     
-    func changeHost(host: Host) {
+    func changeHost(_ host: Host) {
         groupSelected = nil
         hostSelected = host
         
         nameField.stringValue = host.getName()
-        nameField.enabled = true
+        nameField.isEnabled = true
         hostField.stringValue = host.getHost()
-        hostField.enabled = true
+        hostField.isEnabled = true
         usernameField.stringValue = host.getUsername()
-        usernameField.enabled = true
+        usernameField.isEnabled = true
         passwordField.stringValue = host.getPassword()
-        passwordField.enabled = true
-        iconField.selectItemWithObjectValue(host.getIcon())
+        passwordField.isEnabled = true
+        iconField.selectItem(withObjectValue: host.getIcon())
         iconPreview.image = NSImage(named: host.getIcon())
-        iconField.enabled = true
+        iconField.isEnabled = true
         
-        parentField.enabled = true
+        parentField.isEnabled = true
         parentField.removeAllItems()
         for g in data!.getAllGroups() {
-            parentField.addItemWithTitle(g.getName())
+            parentField.addItem(withTitle: g.getName())
         }
-        parentField.selectItemWithTitle(host.getParent().getName())
+        parentField.selectItem(withTitle: host.getParent().getName())
         
-        connectSSHButton.enabled = true
-        connectSFTPButton.enabled = true
-        addHostButton.enabled = false
-        addGroupButton.enabled = false
-        saveButton.enabled = true
-        removeButton.enabled = true
+        connectSSHButton.isEnabled = true
+        connectSFTPButton.isEnabled = true
+        addHostButton.isEnabled = false
+        addGroupButton.isEnabled = false
+        saveButton.isEnabled = true
+        removeButton.isEnabled = true
     }
     
-    func changeGroup(group: Group) {
+    func changeGroup(_ group: Group) {
         groupSelected = group
         hostSelected = nil
         
         nameField.stringValue = group.getName()
-        nameField.enabled = true
+        nameField.isEnabled = true
         hostField.stringValue = ""
-        hostField.enabled = false
+        hostField.isEnabled = false
         usernameField.stringValue = ""
-        usernameField.enabled = false
+        usernameField.isEnabled = false
         passwordField.stringValue = ""
-        passwordField.enabled = false
-        iconField.selectItemWithObjectValue("NSApplicationIcon")
+        passwordField.isEnabled = false
+        iconField.selectItem(withObjectValue: "NSApplicationIcon")
         iconPreview.image = NSImage(named: "NSApplicationIcon")
-        iconField.enabled = false
+        iconField.isEnabled = false
         
-        parentField.enabled = true
+        parentField.isEnabled = true
         parentField.removeAllItems()
-        parentField.addItemWithTitle("ROOT")
+        parentField.addItem(withTitle: "ROOT")
         for g in data!.getAllGroups() {
-            parentField.addItemWithTitle(g.getName())
+            parentField.addItem(withTitle: g.getName())
         }
         
         if (group.getParent() == nil) {
-            parentField.selectItemWithTitle("ROOT")
+            parentField.selectItem(withTitle: "ROOT")
         }
         else {
-            parentField.selectItemWithTitle(group.getParent()!.getName())
+            parentField.selectItem(withTitle: group.getParent()!.getName())
         }
         
-        connectSSHButton.enabled = false
-        connectSFTPButton.enabled = false
-        addHostButton.enabled = true
-        addGroupButton.enabled = true
-        saveButton.enabled = true
-        removeButton.enabled = true
+        connectSSHButton.isEnabled = false
+        connectSFTPButton.isEnabled = false
+        addHostButton.isEnabled = true
+        addGroupButton.isEnabled = true
+        saveButton.isEnabled = true
+        removeButton.isEnabled = true
     }
     
     func reloadList() {
-        let splitViewController = self.parentViewController as! NSSplitViewController
+        let splitViewController = self.parent as! NSSplitViewController
         let listController = splitViewController.childViewControllers[0] as! ListController
 
         listController.reloadData()
