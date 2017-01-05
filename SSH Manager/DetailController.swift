@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 class DetailController : NSViewController {
+    var dictGroupToMenuItem: [NSMenuItem: Group?] = [:]
     
     var data:Data? = nil
     var groupSelected:Group? = nil
@@ -76,8 +77,9 @@ class DetailController : NSViewController {
             data!.removeRootGroup(groupSelected!)
             groupSelected?.setParentToRoot()
             
-            if (parentField.selectedItem?.title != "ROOT") {
-                data!.getGroup(parentField.selectedItem!.title)!.addGroup(groupSelected!)
+            let group:Group? = self.getGroup(menuItem: parentField.selectedItem!)
+            if (group != nil) {
+                group!.addGroup(groupSelected!)
             }
             else {
                 data!.addRootGroup(groupSelected!)
@@ -91,7 +93,8 @@ class DetailController : NSViewController {
             hostSelected?.setIconValue(iconField.objectValueOfSelectedItem as! String)
             
             hostSelected?.getParent().removeHost(hostSelected!)
-            data!.getGroup(parentField.selectedItem!.title)?.addHost(hostSelected!)
+            let group:Group = self.getGroup(menuItem: parentField.selectedItem!)!
+            group.addHost(hostSelected!)
         }
 
         reloadList()
@@ -124,11 +127,8 @@ class DetailController : NSViewController {
         iconField.isEnabled = true
         
         parentField.isEnabled = true
-        parentField.removeAllItems()
-        for g in data!.getAllGroups() {
-            parentField.addItem(withTitle: g.getName())
-        }
-        parentField.selectItem(withTitle: host.getParent().getName())
+        self.addAllParent(addROOT: false)
+        self.selectItem(group: host.getParent())
         
         connectSSHButton.isEnabled = true
         connectSFTPButton.isEnabled = true
@@ -155,18 +155,8 @@ class DetailController : NSViewController {
         iconField.isEnabled = false
         
         parentField.isEnabled = true
-        parentField.removeAllItems()
-        parentField.addItem(withTitle: "ROOT")
-        for g in data!.getAllGroups() {
-            parentField.addItem(withTitle: g.getName())
-        }
-        
-        if (group.getParent() == nil) {
-            parentField.selectItem(withTitle: "ROOT")
-        }
-        else {
-            parentField.selectItem(withTitle: group.getParent()!.getName())
-        }
+        self.addAllParent(addROOT: true)
+        self.selectItem(group: group.getParent())
         
         connectSSHButton.isEnabled = false
         connectSFTPButton.isEnabled = false
@@ -245,5 +235,50 @@ class DetailController : NSViewController {
             NSImageNameStatusNone,
             NSImageNameShareTemplate
         ]
+    }
+    
+    func addAllParent(addROOT: Bool) {
+        self.dictGroupToMenuItem = [:]
+        parentField.removeAllItems()
+        
+        if (addROOT) {
+            parentField.addItem(withTitle: "ROOT")
+            dictGroupToMenuItem[parentField.lastItem!] = nil as Group?;
+        }
+        
+        for g in data!.getAllGroups() {
+            var title:String = g.getName();
+            if ((g.getParent()) != nil) {
+                title += " (" + (g.getParent()!.getName()) + ")"
+            }
+            else {
+                title += " (#)"
+            }
+            
+            parentField.addItem(withTitle: title)
+            dictGroupToMenuItem[parentField.lastItem!] = g;
+        }
+    }
+    
+    func getNSMenuItem(group: Group?) -> NSMenuItem {
+        var find:NSMenuItem? = nil;
+        
+        for menu in self.dictGroupToMenuItem.keys {
+            // Astuce to check if null
+            let menuIsNull:Group? = self.dictGroupToMenuItem[menu]!
+            if ((menuIsNull == nil && group == nil) || (menuIsNull != nil && group != nil && self.dictGroupToMenuItem[menu]! == group!)) {
+                find = menu
+            }
+        }
+        
+        return find!
+    }
+    
+    func getGroup(menuItem: NSMenuItem) -> Group? {
+        return self.dictGroupToMenuItem[menuItem]!
+    }
+    
+    func selectItem(group: Group?) {
+        self.parentField.select(self.getNSMenuItem(group: group))
     }
 }
