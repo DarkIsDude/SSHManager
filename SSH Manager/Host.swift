@@ -94,12 +94,20 @@ class Host: Object {
         let pathFile = fileURL.path
         
         do {
-            var write = "#!/usr/bin/expect -f\n"
-            write = write + "spawn ssh " + self.getUsername() + "@" + self.getHost() + "\n"
-            write = write + "match_max 100000\n"
-            write = write + "expect \"*?assword:*\"\n"
-            write = write + "send -- \"" + self.getPassword() + "\r\"\n"
-            write = write + "interact\n"
+            var write = "";
+            
+            if (!self.getPassword().isEmpty) {
+                write = "#!/usr/bin/expect -f\n"
+                write = write + "spawn ssh " + self.getUsername() + "@" + self.getHost() + "\n"
+                write = write + "match_max 100000\n"
+                write = write + "expect \"*?assword:*\"\n"
+                write = write + "send -- \"" + self.getPassword() + "\r\"\n"
+                write = write + "interact\n"
+            }
+            else {
+                write = "#!/bin/sh -f\n"
+                write = write + "ssh " + self.getUsername() + "@" + self.getHost() + "\n"
+            }
             
             try write.write(toFile: pathFile, atomically: false, encoding: String.Encoding.utf8)
         }
@@ -113,7 +121,6 @@ class Host: Object {
         taskChmod.launch()
         taskChmod.waitUntilExit()
         
-        // TODO change iTerm by...
         let taskOpen = Process()
         taskOpen.launchPath = "/usr/bin/open"
         taskOpen.arguments = ["-a", Constant.getSSHPath(), pathFile]
@@ -126,9 +133,12 @@ class Host: Object {
     func connectSFTP() {
         let task = Process()
         task.launchPath = "/usr/bin/env"
-        task.arguments = [Constant.getSFTPPath(), "sftp://" + self.getUsername() + ":" + self.getPassword() + "@" + self.getHost()]
+        if (self.getPassword().isEmpty) {
+            task.arguments = [Constant.getSFTPPath(), "sftp://" + self.getUsername() + "@" + self.getHost()]
+        }
+        else {
+            task.arguments = [Constant.getSFTPPath(), "sftp://" + self.getUsername() + ":" + self.getPassword() + "@" + self.getHost()]
+        }
         task.launch()
-        
-        // TODO
     }
 }
