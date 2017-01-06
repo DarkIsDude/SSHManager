@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DB0EB9BD1D0F4E2E0007B6BC /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */; };
 		DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EB9BE1D0F54FA0007B6BC /* Group.swift */; };
+		DB13ECE71E2048CF00182768 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13ECE61E2048CF00182768 /* SplitViewController.swift */; };
+		DB13ECE91E2049F000182768 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13ECE81E2049F000182768 /* MainWindowController.swift */; };
 		DB2A6F271D76F66500C1F705 /* PreferenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A6F261D76F66500C1F705 /* PreferenceController.swift */; };
 		DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB342EB81D1282A6003B00F0 /* DetailController.swift */; };
 		DB6115BF1E1E9E5C00D2C202 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6115BA1E1E9DC200D2C202 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -59,6 +61,8 @@
 /* Begin PBXFileReference section */
 		DB0EB9BC1D0F4E2E0007B6BC /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		DB0EB9BE1D0F54FA0007B6BC /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		DB13ECE61E2048CF00182768 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		DB13ECE81E2049F000182768 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		DB2A6F261D76F66500C1F705 /* PreferenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceController.swift; sourceTree = "<group>"; };
 		DB342EB81D1282A6003B00F0 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		DB6115BA1E1E9DC200D2C202 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 		DBD4F5031D0F336800AE98B4 /* SSH ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SSH ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD4F5071D0F336800AE98B4 /* SSH_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSH_ManagerUITests.swift; sourceTree = "<group>"; };
 		DBD4F5091D0F336800AE98B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBE0F9211E1FD65C00BD2EBB /* SSH Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SSH Manager.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +134,8 @@
 				DBD4F4EC1D0F336800AE98B4 /* ListController.swift */,
 				DB342EB81D1282A6003B00F0 /* DetailController.swift */,
 				DB2A6F261D76F66500C1F705 /* PreferenceController.swift */,
+				DB13ECE61E2048CF00182768 /* SplitViewController.swift */,
+				DB13ECE81E2049F000182768 /* MainWindowController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 		DBD4F4E91D0F336800AE98B4 /* SSH Manager */ = {
 			isa = PBXGroup;
 			children = (
+				DBE0F9211E1FD65C00BD2EBB /* SSH Manager.entitlements */,
 				DB8FD20D1D76FCFF0072CD82 /* tools */,
 				DBB5EF351D490A260065B6B1 /* controller */,
 				DBB5EF341D490A150065B6B1 /* model */,
@@ -258,6 +266,11 @@
 					DBD4F4E61D0F336800AE98B4 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					DBD4F4F71D0F336800AE98B4 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -328,9 +341,11 @@
 				DBD4F4ED1D0F336800AE98B4 /* ListController.swift in Sources */,
 				DB8FD20F1D76FD0E0072CD82 /* Constant.swift in Sources */,
 				DB2A6F271D76F66500C1F705 /* PreferenceController.swift in Sources */,
+				DB13ECE71E2048CF00182768 /* SplitViewController.swift in Sources */,
 				DBD4F4EB1D0F336800AE98B4 /* AppDelegate.swift in Sources */,
 				DB342EB91D1282A6003B00F0 /* DetailController.swift in Sources */,
 				DB0EB9BF1D0F54FA0007B6BC /* Group.swift in Sources */,
+				DB13ECE91E2049F000182768 /* MainWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
