@@ -18,6 +18,10 @@ class Host: Object {
     dynamic var icon:String = "NSComputer"
     dynamic var parent:Group? = Group()
     
+    class func sort(h1:Host, h2:Host) -> Bool {
+        return h1.name < h2.name
+    }
+    
     func populate (_ name:String, host:String, username:String, password:String) -> Host {
         self.name = name
         self.host = host

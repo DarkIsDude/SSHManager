@@ -51,17 +51,22 @@ class Data {
     // Je dois tout copier pour éviter des erreurs lors dans les threads
     fileprivate func loadData() {
         let realm = try! Realm()
-        groups = []
+        self.groups = []
         
         let groupsToSort = realm.objects(Group.self)
         for g in groupsToSort {
             if (g.getParent() == nil) {
-                groups.append(g.copyIt())
+                self.groups.append(g.copyIt())
             }
         }
         
-        if groups.isEmpty {
-            groups.append(Group().populate("My first group"))
+        if self.groups.isEmpty {
+            self.groups.append(Group().populate("My first group"))
+        }
+        
+        self.groups.sort(by: Group.sort)
+        for g in self.groups {
+            g.sort()
         }
     }
     
@@ -105,10 +110,11 @@ class Data {
             groupsOnly = getAllGroups(groupsOnly, element: g)
         }
         
+        groupsOnly.sort(by: Group.sort)
         return groupsOnly
     }
     
-    func getAllGroups(_ groups:[Group], element:Group) -> [Group] {
+    private func getAllGroups(_ groups:[Group], element:Group) -> [Group] {
         var groupsOnly:[Group] = groups
         groupsOnly.append(element)
         
@@ -163,6 +169,8 @@ class Data {
         if (findIndex(group) < 0) {
             self.groups.append(group)
         }
+        
+        self.groups.sort(by: Group.sort)
     }
     
     func removeRootGroup(_ group:Group) {
@@ -170,6 +178,8 @@ class Data {
         if (i > 0) {
             groups.remove(at: i)
         }
+        
+        self.groups.sort(by: Group.sort)
     }
     
     fileprivate func findIndex(_ group:Group) -> Int {
