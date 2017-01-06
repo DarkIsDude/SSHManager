@@ -17,6 +17,30 @@ class Group: Object {
     var groups:List<Group> = List<Group>()
     var hosts:List<Host> = List<Host>()
     
+    class func sort(g1:Group, g2:Group) -> Bool {
+        return g1.name < g2.name
+    }
+    
+    /**
+     * Trie les groupes et les hotes que contient ce groupe
+     */
+    func sort() {
+        let groups:[Group] = self.groups.sorted(by: Group.sort)
+        let hosts:[Host] = self.hosts.sorted(by: Host.sort)
+        
+        self.groups.removeAll()
+        self.hosts.removeAll()
+        
+        for g in groups {
+            self.groups.append(g)
+            g.sort()
+        }
+        
+        for h in hosts {
+            self.hosts.append(h)
+        }
+    }
+    
     func populate(_ name:String) -> Group {
         self.name = name
         return self
